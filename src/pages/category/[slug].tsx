@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
     createPathsForStaticPage,
     getCategoryPageSlugs,
+    getProductsForCategory,
 } from "../../data/paths";
 import {
     getStaticPropsForNavigation,
@@ -10,15 +11,18 @@ import {
 } from "../../data/props";
 import { NavigationContext } from "../../context/NavigationContext";
 import { Layout } from "../../components/Layout";
+import Link from "next/link";
 
 interface CategoryPageProps extends StaticPropsForNavigation {
     description: string;
+    products: string[];
 }
 
 function CategoryPage({
     categoryPageLinks,
     contentPageLinks,
     description,
+    products,
 }: CategoryPageProps) {
     return (
         <NavigationContext.Provider
@@ -29,6 +33,17 @@ function CategoryPage({
         >
             <Layout>
                 <p>{description}</p>
+                <ul>
+                    {products.map((product, i) => {
+                        return (
+                            <li key={i}>
+                                <Link href={"/product/" + product}>
+                                    {product}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
             </Layout>
         </NavigationContext.Provider>
     );
@@ -44,9 +59,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export const getStaticProps: GetStaticProps<CategoryPageProps> = async (
-    context
-) => {
+export const getStaticProps: GetStaticProps<
+    CategoryPageProps,
+    {
+        slug: string;
+    }
+> = async (context) => {
     const {
         categoryPageLinks,
         contentPageLinks,
@@ -57,11 +75,14 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async (
             ? "The colors on these are lovely."
             : "Go in style with denim.";
 
+    const products = getProductsForCategory(context.params.slug);
+
     return {
         props: {
             categoryPageLinks,
             contentPageLinks,
             description,
+            products,
         },
     };
 };
