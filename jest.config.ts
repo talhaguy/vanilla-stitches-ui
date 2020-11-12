@@ -114,7 +114,7 @@ export default {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  // rootDir: undefined,
+  rootDir: "test",
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -172,7 +172,10 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  // use babel test config file for tests
+  transform: {
+    "\\.tsx$": ["babel-jest", { "configFile": "./babel.config.test.js" }]
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
