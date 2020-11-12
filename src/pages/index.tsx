@@ -1,52 +1,43 @@
 import React from "react";
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import { getCategoryPageSlugs } from "../data/paths";
+import { getCategoryPageSlugs, getContentPageSlugs } from "../data/paths";
+import { Layout } from "../components/Layout";
+import { NavigationContext } from "../context/NavigationContext";
+import {
+    getStaticPropsForNavigation,
+    StaticPropsForNavigation,
+} from "../data/props";
 
-interface HomePageProps {
-    categoryPageLinks: string[];
-}
+interface HomePageProps extends StaticPropsForNavigation {}
 
-function HomePage({ categoryPageLinks }: HomePageProps) {
+function HomePage({ categoryPageLinks, contentPageLinks }: HomePageProps) {
     return (
-        <div>
-            <h1>Home Page</h1>
-            <nav>
-                <h2>Categories:</h2>
-                <ul>
-                    {categoryPageLinks.map((link) => (
-                        <li>
-                            <Link href={link}>
-                                <a>{link}</a>
-                            </Link>
-                        </li>
-                    ))}
-                    <li></li>
-                </ul>
-
-                <h2>Products:</h2>
-                <ul>
-                    <li></li>
-                </ul>
-
-                <h2>Content Pages:</h2>
-                <ul>
-                    <li></li>
-                </ul>
-            </nav>
-        </div>
+        <NavigationContext.Provider
+            value={{
+                categoryPageLinks,
+                contentPageLinks,
+            }}
+        >
+            <Layout>
+                <h1>Home Page</h1>
+            </Layout>
+        </NavigationContext.Provider>
     );
 }
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async (
     context
 ) => {
-    let categoryPageLinks = getCategoryPageSlugs();
-    categoryPageLinks = categoryPageLinks.map((link) => "/category/" + link);
+    const {
+        categoryPageLinks,
+        contentPageLinks,
+    } = getStaticPropsForNavigation();
 
     return {
         props: {
             categoryPageLinks,
+            contentPageLinks,
         },
     };
 };

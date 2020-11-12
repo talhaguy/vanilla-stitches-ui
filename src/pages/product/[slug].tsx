@@ -4,13 +4,34 @@ import {
     createPathsForStaticPage,
     getProductPageSlugs,
 } from "../../data/paths";
+import {
+    getStaticPropsForNavigation,
+    StaticPropsForNavigation,
+} from "../../data/props";
+import { NavigationContext } from "../../context/NavigationContext";
+import { Layout } from "../../components/Layout";
 
-interface ProductPageProps {
+interface ProductPageProps extends StaticPropsForNavigation {
     shortDescription: string;
 }
 
-function ProductPage({ shortDescription }: ProductPageProps) {
-    return <p>{shortDescription}</p>;
+function ProductPage({
+    categoryPageLinks,
+    contentPageLinks,
+    shortDescription,
+}: ProductPageProps) {
+    return (
+        <NavigationContext.Provider
+            value={{
+                categoryPageLinks,
+                contentPageLinks,
+            }}
+        >
+            <Layout>
+                <p>{shortDescription}</p>
+            </Layout>
+        </NavigationContext.Provider>
+    );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -26,6 +47,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ProductPageProps> = async (
     context
 ) => {
+    const {
+        categoryPageLinks,
+        contentPageLinks,
+    } = getStaticPropsForNavigation();
+
     const shortDescription =
         context.params.slug === "flower-pouch"
             ? "This is a flower pouch."
@@ -33,6 +59,8 @@ export const getStaticProps: GetStaticProps<ProductPageProps> = async (
 
     return {
         props: {
+            categoryPageLinks,
+            contentPageLinks,
             shortDescription,
         },
     };
