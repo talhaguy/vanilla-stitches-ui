@@ -1,4 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import {
+    createPathsForStaticPage,
+    getContentPageSlugs,
+} from "../../data/paths";
 
 interface ContentPageProps {
     message: string;
@@ -9,20 +13,11 @@ function ContentPage({ message }: ContentPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+    const slugs = getContentPageSlugs();
+    const paths = createPathsForStaticPage(slugs);
+
     return {
-        // paths: ["/page/about", "/page/faq"],
-        paths: [
-            {
-                params: {
-                    slug: "about",
-                },
-            },
-            {
-                params: {
-                    slug: "faq",
-                },
-            },
-        ],
+        paths,
         fallback: false,
     };
 };
