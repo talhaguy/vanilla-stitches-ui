@@ -14,5 +14,8 @@ export const productPageData: ProductPageData = {
         "http://lorempixel.com/600/600/fashion/",
         "http://lorempixel.com/600/600/fashion/",
     ],
-    price: 21.99,
+    price: {
+        listPrice: 21.99,
+        salePrice: 15.99,
+    },
 };

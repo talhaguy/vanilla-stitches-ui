@@ -3,6 +3,7 @@ import { StaticPropsForNavigation } from "../../data/props";
 import { NavigationContext } from "../../context/NavigationContext";
 import { Layout } from "../Layout";
 import { ProductPageData } from "./models/ProductPageData";
+import { Price } from "../Price";
 
 export interface ProductPageProps extends StaticPropsForNavigation {
     pageData: ProductPageData;
@@ -22,7 +23,7 @@ export function ProductPage({
         >
             <Layout>
                 <h1>{pageData.name}</h1>
-                <div>{pageData.price}</div>
+                <Price price={pageData.price} />
                 {pageData.description.map((block, i) => {
                     return <p key={i}>{block}</p>;
                 })}

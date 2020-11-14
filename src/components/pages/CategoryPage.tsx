@@ -4,6 +4,7 @@ import { NavigationContext } from "../../context/NavigationContext";
 import { Layout } from "../../components/Layout";
 import Link from "next/link";
 import { CategoryPageData } from "./models/CategoryPageData";
+import { Price } from "../Price";
 
 export interface CategoryPageProps extends StaticPropsForNavigation {
     pageData: CategoryPageData;
@@ -38,11 +39,7 @@ export function CategoryPage({
                                     <a>
                                         <img src={product.image} />
                                         <div>{product.name}</div>
-                                        <div>
-                                            {product.price.salePrice
-                                                ? product.price.salePrice
-                                                : product.price.listPrice}
-                                        </div>
+                                        <Price price={product.price} />
                                     </a>
                                 </Link>
                             </li>
