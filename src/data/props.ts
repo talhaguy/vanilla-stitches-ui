@@ -1,8 +1,10 @@
 import { categoryPageData } from "../../test/mocks/categoryPageData";
 import { contentPageData } from "../../test/mocks/contentPageData";
+import { landingPageData } from "../../test/mocks/landingPageData";
 import { productPageData } from "../../test/mocks/productPageData";
 import { CategoryPageData } from "../components/pages/models/CategoryPageData";
 import { ContentPageData } from "../components/pages/models/ContentPageData";
+import { LandingPageData } from "../components/pages/models/LandingPageData";
 import { ProductPageData } from "../components/pages/models/ProductPageData";
 import { getCategoryPageSlugs, getContentPageSlugs } from "./paths";
 
@@ -50,4 +52,12 @@ export interface GetContentPageDataFunc {
 
 export const getContentPageData: GetContentPageDataFunc = () => {
     return contentPageData;
+};
+
+export interface GetLandingPageDataFunc {
+    (): LandingPageData;
+}
+
+export const getLandingPageData: GetLandingPageDataFunc = () => {
+    return landingPageData;
 };

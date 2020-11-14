@@ -1,45 +1,16 @@
-import React from "react";
-import Link from "next/link";
 import { GetStaticProps } from "next";
-import { getCategoryPageSlugs, getContentPageSlugs } from "../data/paths";
-import { Layout } from "../components/Layout";
-import { NavigationContext } from "../context/NavigationContext";
-import {
-    getStaticPropsForNavigation,
-    StaticPropsForNavigation,
-} from "../data/props";
+import { getLandingPageData, getStaticPropsForNavigation } from "../data/props";
+import { LandingPage, LandingPageProps } from "../components/pages/LandingPage";
+import { getStaticProps as getStaticPropsForLandingPage } from "../data/staticData/landingPage";
 
-interface HomePageProps extends StaticPropsForNavigation {}
+export default LandingPage;
 
-function HomePage({ categoryPageLinks, contentPageLinks }: HomePageProps) {
-    return (
-        <NavigationContext.Provider
-            value={{
-                categoryPageLinks,
-                contentPageLinks,
-            }}
-        >
-            <Layout>
-                <h1>Home Page</h1>
-            </Layout>
-        </NavigationContext.Provider>
-    );
-}
-
-export const getStaticProps: GetStaticProps<HomePageProps> = async (
+export const getStaticProps: GetStaticProps<LandingPageProps> = async (
     context
 ) => {
-    const {
-        categoryPageLinks,
-        contentPageLinks,
-    } = getStaticPropsForNavigation();
-
-    return {
-        props: {
-            categoryPageLinks,
-            contentPageLinks,
-        },
-    };
+    return getStaticPropsForLandingPage(
+        getStaticPropsForNavigation,
+        getLandingPageData,
+        context
+    );
 };
-
-export default HomePage;
