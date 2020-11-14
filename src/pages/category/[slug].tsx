@@ -1,62 +1,28 @@
-import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
     createPathsForStaticPage,
     getCategoryPageSlugs,
-    getProductsForCategory,
 } from "../../data/paths";
 import {
+    getCategoryPageData,
     getStaticPropsForNavigation,
-    StaticPropsForNavigation,
 } from "../../data/props";
-import { NavigationContext } from "../../context/NavigationContext";
-import { Layout } from "../../components/Layout";
-import Link from "next/link";
+import {
+    CategoryPage,
+    CategoryPageProps,
+} from "../../components/pages/CategoryPage";
+import {
+    getStaticPaths as getStaticPathsForCategoryPage,
+    getStaticProps as getStaticPropsForCategoryPage,
+} from "../../data/staticData/categoryPage";
 
-interface CategoryPageProps extends StaticPropsForNavigation {
-    description: string;
-    products: string[];
-}
-
-function CategoryPage({
-    categoryPageLinks,
-    contentPageLinks,
-    description,
-    products,
-}: CategoryPageProps) {
-    return (
-        <NavigationContext.Provider
-            value={{
-                categoryPageLinks,
-                contentPageLinks,
-            }}
-        >
-            <Layout>
-                <p>{description}</p>
-                <ul>
-                    {products.map((product, i) => {
-                        return (
-                            <li key={i}>
-                                <Link href={"/product/" + product}>
-                                    {product}
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </Layout>
-        </NavigationContext.Provider>
-    );
-}
+export default CategoryPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const slugs = getCategoryPageSlugs();
-    const paths = createPathsForStaticPage(slugs);
-
-    return {
-        paths,
-        fallback: false,
-    };
+    return getStaticPathsForCategoryPage(
+        getCategoryPageSlugs,
+        createPathsForStaticPage
+    );
 };
 
 export const getStaticProps: GetStaticProps<
@@ -65,26 +31,9 @@ export const getStaticProps: GetStaticProps<
         slug: string;
     }
 > = async (context) => {
-    const {
-        categoryPageLinks,
-        contentPageLinks,
-    } = getStaticPropsForNavigation();
-
-    const description =
-        context.params.slug === "colorful"
-            ? "The colors on these are lovely."
-            : "Go in style with denim.";
-
-    const products = getProductsForCategory(context.params.slug);
-
-    return {
-        props: {
-            categoryPageLinks,
-            contentPageLinks,
-            description,
-            products,
-        },
-    };
+    return getStaticPropsForCategoryPage(
+        getStaticPropsForNavigation,
+        getCategoryPageData,
+        context
+    );
 };
-
-export default CategoryPage;

@@ -1,4 +1,6 @@
+import { categoryPageData } from "../../test/mocks/categoryPageData";
 import { productPageData } from "../../test/mocks/productPageData";
+import { CategoryPageData } from "../components/pages/models/CategoryPageData";
 import { ProductPageData } from "../components/pages/models/ProductPageData";
 import { getCategoryPageSlugs, getContentPageSlugs } from "./paths";
 
@@ -30,4 +32,12 @@ export interface GetProductPageDataFunc {
 
 export const getProductPageData: GetProductPageDataFunc = () => {
     return productPageData;
+};
+
+export interface GetCategoryPageDataFunc {
+    (): CategoryPageData;
+}
+
+export const getCategoryPageData: GetCategoryPageDataFunc = () => {
+    return categoryPageData;
 };

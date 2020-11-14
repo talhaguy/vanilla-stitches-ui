@@ -17,19 +17,6 @@ export const getContentPageSlugs: GetPageSlugsFunc = () => {
     return ["about", "faq"];
 };
 
-export interface GetProductForCategoryFunc {
-    (slug: string): string[];
-}
-
-export const getProductsForCategory: GetProductForCategoryFunc = (slug) => {
-    // TODO: make request for data...
-    if (slug === "colorful") {
-        return ["flower-pouch"];
-    } else {
-        return ["denim-pouch"];
-    }
-};
-
 export interface CreatePathsForStaticPageFunc {
     (slugs: string[]): {
         params: {
