@@ -1,28 +1,46 @@
-export function getCategoryPageSlugs() {
+export interface GetPageSlugsFunc {
+    (): string[];
+}
+
+export const getCategoryPageSlugs: GetPageSlugsFunc = () => {
     // TODO: make request for data...
     return ["colorful", "denim"];
-}
+};
 
-export function getProductPageSlugs() {
+export const getProductPageSlugs: GetPageSlugsFunc = () => {
     // TODO: make request for data...
     return ["flower-pouch", "denim-pouch"];
-}
+};
 
-export function getContentPageSlugs() {
+export const getContentPageSlugs: GetPageSlugsFunc = () => {
     // TODO: make request for data...
     return ["about", "faq"];
+};
+
+export interface GetProductForCategoryFunc {
+    (slug: string): string[];
 }
 
-export function getProductsForCategory(slug: string) {
+export const getProductsForCategory: GetProductForCategoryFunc = (slug) => {
     // TODO: make request for data...
     if (slug === "colorful") {
         return ["flower-pouch"];
     } else {
         return ["denim-pouch"];
     }
+};
+
+export interface CreatePathsForStaticPageFunc {
+    (slugs: string[]): {
+        params: {
+            slug: string;
+        };
+    }[];
 }
 
-export function createPathsForStaticPage(slugs: string[]) {
+export const createPathsForStaticPage: CreatePathsForStaticPageFunc = (
+    slugs
+) => {
     return slugs.map((slug) => {
         return {
             params: {
@@ -30,4 +48,4 @@ export function createPathsForStaticPage(slugs: string[]) {
             },
         };
     });
-}
+};
