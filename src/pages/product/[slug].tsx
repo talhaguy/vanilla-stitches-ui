@@ -1,8 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import {
-    createPathsForStaticPage,
-    getProductPageSlugs,
-} from "../../data/paths";
+import { getProductPageSlugs } from "../../data/paths";
 import {
     getProductPageData,
     getStaticPropsForNavigation,
@@ -19,10 +16,7 @@ import {
 export default ProductPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForProductPage(
-        getProductPageSlugs,
-        createPathsForStaticPage
-    );
+    return getStaticPathsForProductPage(getProductPageSlugs);
 };
 
 export const getStaticProps: GetStaticProps<ProductPageProps> = async (

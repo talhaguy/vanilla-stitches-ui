@@ -3,10 +3,7 @@ import {
     ContentPage,
     ContentPageProps,
 } from "../../components/pages/ContentPage";
-import {
-    createPathsForStaticPage,
-    getContentPageSlugs,
-} from "../../data/paths";
+import { getContentPageSlugs } from "../../data/paths";
 import {
     getContentPageData,
     getStaticPropsForNavigation,
@@ -19,10 +16,7 @@ import {
 export default ContentPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForContentPage(
-        getContentPageSlugs,
-        createPathsForStaticPage
-    );
+    return getStaticPathsForContentPage(getContentPageSlugs);
 };
 
 export const getStaticProps: GetStaticProps<ContentPageProps> = async (

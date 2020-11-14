@@ -1,12 +1,11 @@
-import { CreatePathsForStaticPageFunc, GetPageSlugsFunc } from "../paths";
+import { createPathsForStaticPage, GetPageSlugsFunc } from "../paths";
 import {
     GetCategoryPageDataFunc,
     GetStaticPropsForNavigationFunc,
 } from "../props";
 
 export const getStaticPaths = async (
-    getCategoryPageSlugs: GetPageSlugsFunc,
-    createPathsForStaticPage: CreatePathsForStaticPageFunc
+    getCategoryPageSlugs: GetPageSlugsFunc
 ) => {
     const slugs = getCategoryPageSlugs();
     const paths = createPathsForStaticPage(slugs);

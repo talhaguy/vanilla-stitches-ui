@@ -1,8 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import {
-    createPathsForStaticPage,
-    getCategoryPageSlugs,
-} from "../../data/paths";
+import { getCategoryPageSlugs } from "../../data/paths";
 import {
     getCategoryPageData,
     getStaticPropsForNavigation,
@@ -19,10 +16,7 @@ import {
 export default CategoryPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForCategoryPage(
-        getCategoryPageSlugs,
-        createPathsForStaticPage
-    );
+    return getStaticPathsForCategoryPage(getCategoryPageSlugs);
 };
 
 export const getStaticProps: GetStaticProps<
