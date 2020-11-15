@@ -1,8 +1,10 @@
 import { GetStaticProps, GetStaticPropsResult } from "next";
-import { getLandingPageData } from "../data/props";
-import { LandingPage, LandingPageProps } from "../components/pages/LandingPage";
-import { getStaticProps as getStaticPropsForLandingPage } from "../data/staticData";
-import { ContextSlugParameter } from "../data/staticData/models/ContextSlugParameter";
+import {
+    getStaticProps as getStaticPropsForLandingPage,
+    ContextSlugParameter,
+    getLandingPageData,
+} from "../data";
+import { LandingPage, LandingPageProps } from "../components";
 
 export default LandingPage;
 

@@ -6,7 +6,7 @@ import { CategoryPageData } from "../../components/pages/models/CategoryPageData
 import { ContentPageData } from "../../components/pages/models/ContentPageData";
 import { LandingPageData } from "../../components/pages/models/LandingPageData";
 import { ProductPageData } from "../../components/pages/models/ProductPageData";
-import { FetchFunc } from "../../network/models/fetch";
+import { FetchFunc } from "../../models/fetch";
 import { ApiUrl } from "../constants/ApiUrl";
 
 export interface GetPageDataFunc<T> {

@@ -1,15 +1,12 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from "next";
-import { getProductPageSlugs } from "../../data/paths";
-import { getProductPageData } from "../../data/props";
 import {
     getStaticPaths as getStaticPathsForProductPage,
     getStaticProps as getStaticPropsForProductPage,
-} from "../../data/staticData";
-import {
-    ProductPage,
-    ProductPageProps,
-} from "../../components/pages/ProductPage";
-import { ContextSlugParameter } from "../../data/staticData/models/ContextSlugParameter";
+    ContextSlugParameter,
+    getProductPageSlugs,
+    getProductPageData,
+} from "../../data";
+import { ProductPage, ProductPageProps } from "../../components";
 
 export default ProductPage;
 

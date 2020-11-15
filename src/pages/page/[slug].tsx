@@ -1,15 +1,12 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from "next";
-import {
-    ContentPage,
-    ContentPageProps,
-} from "../../components/pages/ContentPage";
-import { getContentPageSlugs } from "../../data/paths";
-import { getContentPageData } from "../../data/props";
+import { ContentPage, ContentPageProps } from "../../components";
 import {
     getStaticPaths as getStaticPathsForContentPage,
     getStaticProps as getStaticPropsForContentPage,
-} from "../../data/staticData";
-import { ContextSlugParameter } from "../../data/staticData/models/ContextSlugParameter";
+    ContextSlugParameter,
+    getContentPageSlugs,
+    getContentPageData,
+} from "../../data";
 
 export default ContentPage;
 

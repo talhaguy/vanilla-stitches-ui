@@ -1,4 +1,4 @@
-import { FetchFunc } from "../../network/models/fetch";
+import { FetchFunc } from "../../models/fetch";
 import { ApiUrl } from "../constants/ApiUrl";
 
 export interface GetPageSlugsFunc {

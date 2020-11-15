@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface NavigationContextMap {
+export interface NavigationContextMap {
     categoryPageLinks: string[];
     contentPageLinks: string[];
 }
