@@ -9,7 +9,7 @@ export const categoryPageData: CategoryPageData = {
     ],
     products: [
         {
-            link: "/product/flower-pouch",
+            slug: "flower-pouch",
             name: "Flower Pouch",
             price: {
                 listPrice: 21.99,
@@ -18,7 +18,7 @@ export const categoryPageData: CategoryPageData = {
             image: "http://lorempixel.com/300/300/fashion/",
         },
         {
-            link: "/product/rainbow-pouch",
+            slug: "rainbow-pouch",
             name: "Rainbow Pouch",
             price: {
                 listPrice: 25.0,

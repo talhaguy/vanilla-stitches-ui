@@ -16,7 +16,7 @@ export function Navigation({
             <ul>
                 {categoryPageLinks.map((link, i) => (
                     <li key={i}>
-                        <Link href={link}>
+                        <Link href={"/category/" + link}>
                             <a>{link}</a>
                         </Link>
                     </li>
@@ -27,7 +27,7 @@ export function Navigation({
             <ul>
                 {contentPageLinks.map((link, i) => (
                     <li key={i}>
-                        <Link href={link}>
+                        <Link href={"/page/" + link}>
                             <a>{link}</a>
                         </Link>
                     </li>

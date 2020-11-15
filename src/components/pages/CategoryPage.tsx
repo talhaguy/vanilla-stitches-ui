@@ -1,5 +1,5 @@
 import React from "react";
-import { StaticPropsForNavigation } from "../../data/props";
+import { StaticPropsForNavigation } from "../../data/props/navigation";
 import { NavigationContext } from "../../context/NavigationContext";
 import { Layout } from "../../components/Layout";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export function CategoryPage({
                     {pageData.products.map((product, i) => {
                         return (
                             <li key={i}>
-                                <Link href={product.link}>
+                                <Link href={"/product/" + product.slug}>
                                     <a>
                                         <img src={product.image} />
                                         <div>{product.name}</div>

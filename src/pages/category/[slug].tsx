@@ -1,9 +1,6 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from "next";
 import { getCategoryPageSlugs } from "../../data/paths";
-import {
-    getCategoryPageData,
-    getStaticPropsForNavigation,
-} from "../../data/props";
+import { getCategoryPageData } from "../../data/props";
 import {
     CategoryPage,
     CategoryPageProps,
@@ -11,7 +8,8 @@ import {
 import {
     getStaticPaths as getStaticPathsForCategoryPage,
     getStaticProps as getStaticPropsForCategoryPage,
-} from "../../data/staticData/categoryPage";
+} from "../../data/staticData";
+import { ContextSlugParameter } from "../../data/staticData/models/ContextSlugParameter";
 
 export default CategoryPage;
 
@@ -21,13 +19,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<
     CategoryPageProps,
-    {
-        slug: string;
-    }
+    ContextSlugParameter
 > = async (context) => {
     return getStaticPropsForCategoryPage(
-        getStaticPropsForNavigation,
         getCategoryPageData,
         context
-    );
+    ) as Promise<GetStaticPropsResult<CategoryPageProps>>;
 };

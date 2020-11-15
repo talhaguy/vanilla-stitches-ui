@@ -1,7 +1,7 @@
 import { PriceData } from "../../../models/PriceData";
 
 export interface ProductOnCategoryPage {
-    link: string;
+    slug: string;
     name: string;
     price: PriceData;
     image: string;

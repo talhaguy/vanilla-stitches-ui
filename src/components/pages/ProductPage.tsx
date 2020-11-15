@@ -1,5 +1,5 @@
 import React from "react";
-import { StaticPropsForNavigation } from "../../data/props";
+import { StaticPropsForNavigation } from "../../data/props/navigation";
 import { NavigationContext } from "../../context/NavigationContext";
 import { Layout } from "../Layout";
 import { ProductPageData } from "./models/ProductPageData";

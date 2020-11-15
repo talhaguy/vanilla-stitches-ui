@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
 import { NavigationContext } from "../../context/NavigationContext";
-import { StaticPropsForNavigation } from "../../data/props";
+import { StaticPropsForNavigation } from "../../data/props/navigation";
 import { LandingPageData } from "./models/LandingPageData";
 
 export interface LandingPageProps extends StaticPropsForNavigation {
