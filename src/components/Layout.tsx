@@ -1,5 +1,6 @@
 import React, { ReactNode, useContext } from "react";
 import { NavigationContext } from "../context/NavigationContext";
+import { Header } from "./Header";
 import { Navigation } from "./Navigation";
 
 interface LayoutProps {
@@ -13,6 +14,7 @@ export function Layout({ children }: LayoutProps) {
 
     return (
         <>
+            <Header />
             <Navigation
                 categoryPageLinks={categoryPageLinks}
                 contentPageLinks={contentPageLinks}
