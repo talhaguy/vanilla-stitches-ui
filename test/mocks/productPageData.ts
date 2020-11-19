@@ -34,4 +34,5 @@ export const productPageData: ProductPageData = {
         listPrice: 21.99,
         salePrice: 15.99,
     },
+    url: "/product/flower-pouch",
 };

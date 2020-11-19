@@ -1,6 +1,10 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <Html>

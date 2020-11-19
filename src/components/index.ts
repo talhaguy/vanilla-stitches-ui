@@ -16,6 +16,16 @@ export { ProductPage } from "./pages/ProductPage";
 export type { ContentPageProps } from "./pages/ContentPage";
 export { ContentPage } from "./pages/ContentPage";
 
+import { CategoryPageProps } from "./pages/CategoryPage";
+import { LandingPageProps } from "./pages/LandingPage";
+import { ProductPageProps } from "./pages/ProductPage";
+import { ContentPageProps } from "./pages/ContentPage";
+export type PageProps =
+    | CategoryPageProps
+    | LandingPageProps
+    | ProductPageProps
+    | ContentPageProps;
+
 export { Layout } from "./Layout";
 export { Navigation } from "./Navigation";
 export { Price } from "./Price";
