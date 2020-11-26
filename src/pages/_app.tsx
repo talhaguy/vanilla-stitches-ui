@@ -1,35 +1,54 @@
 import type { AppProps } from "next/app";
-import { WithContext } from "../context";
-import { useCartStateAtTopLevel } from "../hooks";
+import { NavigationContext, WindowContext } from "../context";
+import {
+    SnipCartMetaStateContext,
+    SnipCartMetaStateMap,
+    useResetHistory,
+} from "../snipcart";
 
-function MyApp({ Component, pageProps }: AppProps) {
-    console.log("in MyApp", Component, pageProps);
-    const [
-        numItemsRef,
-        subtotalRef,
-        wasSnipCartInitializedRef,
-    ] = useCartStateAtTopLevel(typeof window !== "undefined" ? window : null);
+interface MyAppProps {
+    appProps: AppProps;
+}
+
+// snip cart state to be shared and persisted through rerenders
+const snipCartMetaState: SnipCartMetaStateMap = {
+    snipCartGlobal: null,
+    isReady: false,
+    readyFuncQueue: [],
+    isInitted: false,
+    inittedFuncQueue: [],
+    usedYet: false,
+};
+
+function MyApp({ appProps: { Component, pageProps } }: MyAppProps) {
+    useResetHistory();
+
+    return <Component {...pageProps} />;
+}
+
+function AppContainer(appProps: AppProps) {
+    console.log("in MyApp", appProps.pageProps);
     console.log(
         "DEBUG: is window in MyApp?",
         typeof window !== "undefined" ? window : null
     );
 
     return (
-        <WithContext
-            window={typeof window !== "undefined" ? window : null}
-            cartStateContextMap={{
-                numItemsRef,
-                subtotalRef,
-                wasSnipCartInitializedRef,
-            }}
-            navigationContextMap={{
-                categoryPageLinks: pageProps.categoryPageLinks,
-                contentPageLinks: pageProps.contentPageLinks,
-            }}
+        <WindowContext.Provider
+            value={typeof window !== "undefined" ? window : null}
         >
-            <Component {...pageProps} />
-        </WithContext>
+            <SnipCartMetaStateContext.Provider value={snipCartMetaState}>
+                <NavigationContext.Provider
+                    value={{
+                        categoryPageLinks: appProps.pageProps.categoryPageLinks,
+                        contentPageLinks: appProps.pageProps.contentPageLinks,
+                    }}
+                >
+                    <MyApp appProps={appProps} />
+                </NavigationContext.Provider>
+            </SnipCartMetaStateContext.Provider>
+        </WindowContext.Provider>
     );
 }
 
-export default MyApp;
+export default AppContainer;

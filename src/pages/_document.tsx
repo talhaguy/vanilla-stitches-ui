@@ -1,7 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+// this is only run on the server
 class MyDocument extends Document {
     constructor(props) {
+        console.log("in MyDocument");
         super(props);
     }
 

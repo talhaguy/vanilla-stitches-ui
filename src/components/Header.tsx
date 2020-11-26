@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
-import { CartStateContext } from "../context";
-import { useCartStateAtComponentLevel } from "../hooks";
+import React, { useEffect, useState } from "react";
+import { useSnipCartGlobal } from "../snipcart";
 
 export interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
-    const { numItemsRef, subtotalRef, wasSnipCartInitializedRef } = useContext(
-        CartStateContext
-    );
-    const [numItems, subtotal] = useCartStateAtComponentLevel(
-        numItemsRef,
-        subtotalRef,
-        wasSnipCartInitializedRef
-    );
+    const [_, snipCartRunOnInit] = useSnipCartGlobal();
+    const [numItems, setNumItems] = useState(0);
+    const [subtotal, setSubtotal] = useState(0);
+
+    useEffect(() => {
+        snipCartRunOnInit((snipCart) => {
+            setNumItems(snipCart.store.getState().cart.items.count);
+            setSubtotal(snipCart.store.getState().cart.subtotal);
+        });
+    });
 
     return (
         <header>
