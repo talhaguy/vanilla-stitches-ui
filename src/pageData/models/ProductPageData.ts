@@ -1,4 +1,4 @@
-import { PriceData } from "../../../models/PriceData";
+import { PriceData } from "../../models/PriceData";
 
 export interface ProductPageGalleryImage {
     thumb: string;
@@ -9,11 +9,11 @@ export interface ProductPageData {
     id: string;
     categories: string[];
     name: string;
-    description: string[];
+    description: string;
     images: {
         gallery: ProductPageGalleryImage[];
         cart: string;
     };
     price: PriceData;
-    url: string;
+    urlPath: string;
 }

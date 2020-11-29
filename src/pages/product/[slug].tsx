@@ -3,22 +3,28 @@ import {
     getStaticPaths as getStaticPathsForProductPage,
     getStaticProps as getStaticPropsForProductPage,
     ContextSlugParameter,
-    getProductPageSlugs,
-    getProductPageData,
-} from "../../data";
+    AppStaticPropsResult,
+} from "../../pageData";
+import {
+    fetchNavigationLinks,
+    fetchAllProductSlugs,
+    fetchProductBySlug,
+} from "../../sanity";
 import { ProductPage, ProductPageProps } from "../../components";
 
 export default ProductPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForProductPage(getProductPageSlugs);
+    return getStaticPathsForProductPage(fetchAllProductSlugs);
 };
 
 export const getStaticProps: GetStaticProps<
-    ProductPageProps,
+    AppStaticPropsResult<ProductPageProps>,
     ContextSlugParameter
 > = async (context) => {
-    return getStaticPropsForProductPage(getProductPageData, context) as Promise<
-        GetStaticPropsResult<ProductPageProps>
-    >;
+    return getStaticPropsForProductPage(
+        fetchNavigationLinks,
+        fetchProductBySlug,
+        context
+    ) as Promise<GetStaticPropsResult<AppStaticPropsResult<ProductPageProps>>>;
 };

@@ -1,19 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import {
-    getClient,
-    getCategories,
-    handleFetchError,
-    getHtmlForBlocks,
-} from "../../sanity";
+import { fetchNavigationLinks } from "../../sanity/navigation/factories";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const client = getClient();
     try {
-        const data = await getCategories(client);
-        getHtmlForBlocks(data[0].description);
+        const data = await fetchNavigationLinks();
         res.status(200).json(data);
     } catch (err) {
-        handleFetchError(err);
         res.status(400).json({ message: err.message });
     }
 };

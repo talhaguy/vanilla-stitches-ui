@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
-import { ContentPageData } from "./models/ContentPageData";
+import { ContentPageData } from "../../pageData";
 
 export interface ContentPageProps {
     pageData: ContentPageData;
@@ -13,9 +13,7 @@ export function ContentPage({ pageData }: ContentPageProps) {
             <div>
                 <img src={pageData.heroImage} />
             </div>
-            {pageData.content.map((block, i) => {
-                return <p key={i}>{block}</p>;
-            })}
+            {pageData.content}
         </Layout>
     );
 }

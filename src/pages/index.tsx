@@ -2,17 +2,20 @@ import { GetStaticProps, GetStaticPropsResult } from "next";
 import {
     getStaticProps as getStaticPropsForLandingPage,
     ContextSlugParameter,
-    getLandingPageData,
-} from "../data";
+    AppStaticPropsResult,
+} from "../pageData";
+import { fetchNavigationLinks, fetchLandingPageDataBySlug } from "../sanity";
 import { LandingPage, LandingPageProps } from "../components";
 
 export default LandingPage;
 
 export const getStaticProps: GetStaticProps<
-    LandingPageProps,
+    AppStaticPropsResult<LandingPageProps>,
     ContextSlugParameter
 > = async (context) => {
-    return getStaticPropsForLandingPage(getLandingPageData, context) as Promise<
-        GetStaticPropsResult<LandingPageProps>
-    >;
+    return getStaticPropsForLandingPage(
+        fetchNavigationLinks,
+        fetchLandingPageDataBySlug,
+        context
+    ) as Promise<GetStaticPropsResult<AppStaticPropsResult<LandingPageProps>>>;
 };

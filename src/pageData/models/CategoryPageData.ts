@@ -1,7 +1,7 @@
-import { PriceData } from "../../../models/PriceData";
+import { PriceData } from "../../models/PriceData";
 
 export interface ProductOnCategoryPage {
-    slug: string;
+    urlPath: string;
     name: string;
     price: PriceData;
     image: string;
@@ -10,6 +10,6 @@ export interface ProductOnCategoryPage {
 export interface CategoryPageData {
     heroImage: string;
     name: string;
-    description: string[];
+    description: string;
     products: ProductOnCategoryPage[];
 }

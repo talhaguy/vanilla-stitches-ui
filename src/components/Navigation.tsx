@@ -1,38 +1,32 @@
 import React from "react";
 import Link from "next/link";
+import { NavigationLinkGroup } from "./models/NavigationLinkGroup";
 
 interface NavigationProps {
-    categoryPageLinks: string[];
-    contentPageLinks: string[];
+    navigationLinkGroups: NavigationLinkGroup[];
 }
 
-export function Navigation({
-    categoryPageLinks,
-    contentPageLinks,
-}: NavigationProps) {
+export function Navigation({ navigationLinkGroups }: NavigationProps) {
     return (
         <nav>
-            <h2>Categories:</h2>
-            <ul>
-                {categoryPageLinks.map((link, i) => (
-                    <li key={i}>
-                        <Link href={"/category/" + link}>
-                            <a>{link}</a>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-
-            <h2>Content Pages:</h2>
-            <ul>
-                {contentPageLinks.map((link, i) => (
-                    <li key={i}>
-                        <Link href={"/page/" + link}>
-                            <a>{link}</a>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {navigationLinkGroups.map((group, i) => {
+                return (
+                    <>
+                        <h2>{group.label}</h2>
+                        <ul>
+                            {group.links.map((link, j) => {
+                                return (
+                                    <li>
+                                        <Link href={link.path}>
+                                            <a>{link.label}</a>
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </>
+                );
+            })}
         </nav>
     );
 }

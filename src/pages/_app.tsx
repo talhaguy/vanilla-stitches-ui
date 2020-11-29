@@ -40,8 +40,8 @@ function AppContainer(appProps: AppProps) {
             <SnipCartMetaStateContext.Provider value={snipCartMetaState}>
                 <NavigationContext.Provider
                     value={{
-                        categoryPageLinks: appProps.pageProps.categoryPageLinks,
-                        contentPageLinks: appProps.pageProps.contentPageLinks,
+                        topNavigationLinkGroups:
+                            appProps.pageProps.topNavigationLinkGroups,
                     }}
                 >
                     <MyApp appProps={appProps} />

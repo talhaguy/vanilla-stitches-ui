@@ -3,23 +3,28 @@ import {
     getStaticPaths as getStaticPathsForCategoryPage,
     getStaticProps as getStaticPropsForCategoryPage,
     ContextSlugParameter,
-    getCategoryPageSlugs,
-    getCategoryPageData,
-} from "../../data";
+    AppStaticPropsResult,
+} from "../../pageData";
+import {
+    fetchNavigationLinks,
+    fetchAllCategorySlugs,
+    fetchCategoryBySlug,
+} from "../../sanity";
 import { CategoryPage, CategoryPageProps } from "../../components";
 
 export default CategoryPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForCategoryPage(getCategoryPageSlugs);
+    return getStaticPathsForCategoryPage(fetchAllCategorySlugs);
 };
 
 export const getStaticProps: GetStaticProps<
-    CategoryPageProps,
+    AppStaticPropsResult<CategoryPageProps>,
     ContextSlugParameter
 > = async (context) => {
     return getStaticPropsForCategoryPage(
-        getCategoryPageData,
+        fetchNavigationLinks,
+        fetchCategoryBySlug,
         context
-    ) as Promise<GetStaticPropsResult<CategoryPageProps>>;
+    ) as Promise<GetStaticPropsResult<AppStaticPropsResult<CategoryPageProps>>>;
 };

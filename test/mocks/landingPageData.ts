@@ -1,4 +1,4 @@
-import { LandingPageData } from "../../src/components/pages/models/LandingPageData";
+import { LandingPageData } from "../../src/pageData";
 
 export const landingPageData: LandingPageData = {
     imageAlpha: "http://lorempixel.com/400/400/fashion/",

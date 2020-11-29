@@ -8,17 +8,12 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
-    const { categoryPageLinks, contentPageLinks } = useContext(
-        NavigationContext
-    );
+    const { topNavigationLinkGroups } = useContext(NavigationContext);
 
     return (
         <>
             <Header />
-            <Navigation
-                categoryPageLinks={categoryPageLinks}
-                contentPageLinks={contentPageLinks}
-            />
+            <Navigation navigationLinkGroups={topNavigationLinkGroups} />
             {children}
         </>
     );
