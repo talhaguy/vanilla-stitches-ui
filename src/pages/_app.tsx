@@ -1,4 +1,6 @@
 import type { AppProps } from "next/app";
+import { ThemeProvider } from "styled-components";
+import { THEME } from "../constants";
 import { NavigationContext, WindowContext } from "../context";
 import {
     SnipCartMetaStateContext,
@@ -44,7 +46,9 @@ function AppContainer(appProps: AppProps) {
                             appProps.pageProps.topNavigationLinkGroups,
                     }}
                 >
-                    <MyApp appProps={appProps} />
+                    <ThemeProvider theme={THEME}>
+                        <MyApp appProps={appProps} />
+                    </ThemeProvider>
                 </NavigationContext.Provider>
             </SnipCartMetaStateContext.Provider>
         </WindowContext.Provider>

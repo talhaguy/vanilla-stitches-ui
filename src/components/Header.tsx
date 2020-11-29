@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { useSnipCartGlobal } from "../snipcart";
+
+const Styles = styled.header`
+    background-color: ${(props) => props.theme.COLORS.LIGHT_PINK};
+`;
 
 export interface HeaderProps {}
 
@@ -16,12 +21,12 @@ export function Header(props: HeaderProps) {
     });
 
     return (
-        <header>
+        <Styles>
             <div>
                 <button className="snipcart-checkout">Cart</button>
             </div>
             <div>No. Items: {numItems}</div>
             <div>Total: {subtotal}</div>
-        </header>
+        </Styles>
     );
 }
