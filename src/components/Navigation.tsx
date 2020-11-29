@@ -11,12 +11,12 @@ export function Navigation({ navigationLinkGroups }: NavigationProps) {
         <nav>
             {navigationLinkGroups.map((group, i) => {
                 return (
-                    <>
+                    <div key={i}>
                         <h2>{group.label}</h2>
                         <ul>
                             {group.links.map((link, j) => {
                                 return (
-                                    <li>
+                                    <li key={j}>
                                         <Link href={link.path}>
                                             <a>{link.label}</a>
                                         </Link>
@@ -24,7 +24,7 @@ export function Navigation({ navigationLinkGroups }: NavigationProps) {
                                 );
                             })}
                         </ul>
-                    </>
+                    </div>
                 );
             })}
         </nav>

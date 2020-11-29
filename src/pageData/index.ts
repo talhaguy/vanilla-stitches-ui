@@ -7,8 +7,8 @@ export type { LandingPageData } from "./models/LandingPageData";
 export type { ProductPageData } from "./models/ProductPageData";
 export type { PageData } from "./models/PageData";
 
-export type { ApiUrl } from "./constants/ApiUrl";
-export type { SlugPathPrepend } from "./constants/SlugPathPrepend";
+export { ApiUrl } from "./constants/ApiUrl";
+export { SlugPathPrepend } from "./constants/SlugPathPrepend";
 
 export type { GetNavigationLinkGroupDataFunction } from "./dataInterface/GetNavigationLinkGroupDataFunction";
 export type { GetPageDataFunction } from "./dataInterface/GetPageDataFunction";
