@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { NavigationLinkGroup } from "./models/NavigationLinkGroup";
+import { NavigationLinkGroup } from "../models";
 
 interface NavigationProps {
     navigationLinkGroups: NavigationLinkGroup[];

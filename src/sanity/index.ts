@@ -1,5 +1,3 @@
-export { handleFetchError } from "./error";
-
 export { fetchAllProductSlugs, fetchProductBySlug } from "./product/factories";
 export {
     fetchAllCategorySlugs,

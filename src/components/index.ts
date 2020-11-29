@@ -20,6 +20,3 @@ export type PageProps =
 export { Layout } from "./Layout";
 export { Navigation } from "./Navigation";
 export { Price } from "./Price";
-
-export type { NavigationLink } from "./models/NavigationLink";
-export type { NavigationLinkGroup } from "./models/NavigationLinkGroup";

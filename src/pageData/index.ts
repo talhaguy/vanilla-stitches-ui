@@ -1,4 +1,4 @@
-import { NavigationLinkGroup } from "../components";
+import { NavigationLinkGroup } from "../models";
 import {
     GetStaticPathsResult,
     GetStaticPropsContext,

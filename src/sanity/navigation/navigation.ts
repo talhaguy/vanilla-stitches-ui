@@ -1,6 +1,5 @@
 import { SanityClient } from "@sanity/client";
-import { NavigationLink } from "../../components/models/NavigationLink";
-import { NavigationLinkGroup } from "../../components/models/NavigationLinkGroup";
+import { NavigationLink, NavigationLinkGroup } from "../../models";
 import { SlugPathPrepend } from "../../pageData";
 import { createFetchNavigationLinksQuery } from "./queries";
 

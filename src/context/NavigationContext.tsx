@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { NavigationLinkGroup } from "../components";
+import { NavigationLinkGroup } from "../models";
 
 export interface NavigationContextMap {
     topNavigationLinkGroups: NavigationLinkGroup[];
