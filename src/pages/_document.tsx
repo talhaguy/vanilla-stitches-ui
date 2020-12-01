@@ -46,6 +46,18 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1"
+                    />
+
+                    {/* fonts */}
+                    <link rel="preconnect" href="https://fonts.gstatic.com" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=PT+Sans&family=PT+Serif&display=swap"
+                        rel="stylesheet"
+                    />
+
                     {/* snip cart link tags */}
                     <link rel="preconnect" href="https://app.snipcart.com" />
                     <link rel="preconnect" href="https://cdn.snipcart.com" />

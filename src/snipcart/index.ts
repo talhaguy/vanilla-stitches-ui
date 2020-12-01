@@ -1,4 +1,5 @@
 export { SnipCartEvent } from "./constants/SnipCartEvent";
+export { CSSClass } from "./constants/CSSClass";
 
 export type {
     SnipCartCallbackFunction,

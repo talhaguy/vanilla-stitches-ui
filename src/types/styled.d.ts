@@ -3,6 +3,10 @@ import "styled-components";
 
 declare module "styled-components" {
     export interface DefaultTheme {
+        FONTS: {
+            SANS: string;
+            SERIF: string;
+        };
         COLORS: {
             BLACK: string;
             LIGHT_PINK: string;
@@ -10,6 +14,12 @@ declare module "styled-components" {
             BLOOD_RED: string;
             GOLD: string;
             WHITE: string;
+        };
+        SPACING: {
+            PAGE_MARGIN: string;
+        };
+        SHADOWS: {
+            ICONS: string;
         };
     }
 }
