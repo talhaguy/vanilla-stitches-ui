@@ -9,6 +9,7 @@ declare module "styled-components" {
         };
         COLORS: {
             BLACK: string;
+            DARK_GRAY: string;
             LIGHT_PINK: string;
             DARK_TURQOISE: string;
             BLOOD_RED: string;
@@ -17,6 +18,8 @@ declare module "styled-components" {
         };
         SPACING: {
             PAGE_MARGIN: string;
+            SECTION_INSIDE: string;
+            SECTION_MARGIN: string;
         };
         SHADOWS: {
             ICONS: string;
