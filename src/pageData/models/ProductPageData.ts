@@ -5,9 +5,14 @@ export interface ProductPageGalleryImage {
     large: string;
 }
 
+export interface ProductPageCategory {
+    name: string;
+    urlPath: string;
+}
+
 export interface ProductPageData {
     id: string;
-    categories: string[];
+    categories: ProductPageCategory[];
     name: string;
     description: string;
     images: {

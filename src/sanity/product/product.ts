@@ -1,5 +1,9 @@
 import { SanityClient } from "@sanity/client";
-import { ProductPageData, SlugPathPrepend } from "../../pageData";
+import {
+    ProductPageCategory,
+    ProductPageData,
+    SlugPathPrepend,
+} from "../../pageData";
 import { convertBlocksToHtml } from "../html";
 import { ALL_PRODUCT_SLUGS, createFetchProductBySlugQuery } from "./queries";
 
@@ -20,9 +24,18 @@ export async function fetchProductBySlug(client: SanityClient, slug: string) {
 }
 
 export function convertSanityProductDataForUI(data: SanityProductData) {
+    const convertedCategories: ProductPageCategory[] = data.categories.map(
+        (sanityCategory) => {
+            return Object.assign({}, sanityCategory, {
+                urlPath:
+                    SlugPathPrepend.CategoryPage + "/" + sanityCategory.slug,
+            });
+        }
+    );
     const converted: ProductPageData = Object.assign({}, data, {
         description: convertBlocksToHtml(data.description),
         urlPath: SlugPathPrepend.ProductPage + "/" + data.slug,
+        categories: convertedCategories,
     });
     return converted;
 }

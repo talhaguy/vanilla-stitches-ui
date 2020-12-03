@@ -4,7 +4,11 @@ export type {
 } from "./models/CategoryPageData";
 export type { ContentPageData } from "./models/ContentPageData";
 export type { LandingPageData } from "./models/LandingPageData";
-export type { ProductPageData } from "./models/ProductPageData";
+export type {
+    ProductPageData,
+    ProductPageCategory,
+    ProductPageGalleryImage,
+} from "./models/ProductPageData";
 export type { PageData } from "./models/PageData";
 
 export { ApiUrl } from "./constants/ApiUrl";
