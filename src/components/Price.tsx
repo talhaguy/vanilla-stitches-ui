@@ -3,8 +3,18 @@ import styled from "styled-components";
 import { Currency, formatPrice } from "../currency";
 import { PriceData } from "../models/PriceData";
 
-const Container = styled.div`
-    font: 1.8rem ${(props) => props.theme.FONTS.SANS};
+export enum PriceSize {
+    Small,
+    Medium,
+}
+
+interface ContainerProps {
+    size: PriceSize;
+}
+
+const Container = styled.div<ContainerProps>`
+    font: ${(props) => (props.size === PriceSize.Small ? "1.8rem" : "2.4rem")}
+        ${(props) => props.theme.FONTS.SANS};
 
     .sale {
         color: ${(props) => props.theme.COLORS.BLOOD_RED};
@@ -21,16 +31,16 @@ const Container = styled.div`
     }
 `;
 
-export interface PriceProps {
+export interface PriceProps extends ContainerProps {
     price: PriceData;
 }
 
-export function Price({ price }: PriceProps) {
+export function Price({ price, size }: PriceProps) {
     const isOnSale = typeof price.salePrice !== "undefined";
 
     // TODO: support more currencies
     return (
-        <Container>
+        <Container size={size}>
             {isOnSale && (
                 <span className="sale">
                     {formatPrice(Currency.PhillipinesPeso, price.salePrice)}

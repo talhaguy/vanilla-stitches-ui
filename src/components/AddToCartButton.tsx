@@ -1,3 +1,5 @@
+import { Button } from "./Button";
+
 export interface SnipCartAddToCartDataAttributes {
     id: string;
     price: string;
@@ -14,7 +16,7 @@ export function AddToCartButton({
     item: { id, price, url, image, name },
 }: AddToCartButtonProps) {
     return (
-        <button
+        <div
             className="snipcart-add-item"
             data-item-id={id}
             data-item-price={price}
@@ -22,7 +24,7 @@ export function AddToCartButton({
             data-item-image={image}
             data-item-name={name}
         >
-            Add to Cart
-        </button>
+            <Button label={"Add to Cart"} />
+        </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { Price } from "./Price";
+import { Price, PriceSize } from "./Price";
 import { PriceData } from "../models";
 import Image from "next/image";
 
@@ -58,7 +58,7 @@ export function ProductListItem({
                         className="img"
                     />
                     <div className="product-name">{name}</div>
-                    <Price price={price} />
+                    <Price price={price} size={PriceSize.Small} />
                 </a>
             </Link>
         </Container>

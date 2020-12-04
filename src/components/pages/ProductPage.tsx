@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Layout } from "../Layout";
 import { ProductPageData } from "../../pageData";
-import { Price } from "../Price";
+import { Price, PriceSize } from "../Price";
 import { AddToCartButton } from "../AddToCartButton";
 import { PriceData } from "../../models";
 import { Breadcrumbs } from "../Breadcrumbs";
@@ -13,7 +13,9 @@ const Container = styled.div`
     .product-name-img-cont {
         position: relative;
         height: 161px;
-        margin-bottom: ${(props) => props.theme.SPACING.SECTION_INSIDE};
+        margin: 0 -${(props) => props.theme.SPACING.PAGE_MARGIN} ${(props) =>
+                props.theme.SPACING.SECTION_INSIDE} 0;
+        overflow: hidden;
     }
 
     .product-name-cont {
@@ -39,6 +41,14 @@ const Container = styled.div`
     .name-flower {
         opacity: 0.2;
         transform: rotate(-47deg);
+    }
+
+    .price {
+        margin: ${(props) => props.theme.SPACING.SECTION_INSIDE} 0 10px;
+    }
+
+    .add-to-cart {
+        margin-bottom: ${(props) => props.theme.SPACING.SECTION_INSIDE};
     }
 `;
 
@@ -69,17 +79,23 @@ export function ProductPage({ pageData }: ProductPageProps) {
                     </div>
                 </div>
                 <ImageGallery images={pageData.images.gallery} />
-                <Price price={pageData.price} />
+                <div>
+                    <div className="price">
+                        <Price price={pageData.price} size={PriceSize.Medium} />
+                    </div>
+                    <div className="add-to-cart">
+                        <AddToCartButton
+                            item={{
+                                id: pageData.id,
+                                price: getActivePrice(pageData.price) + "",
+                                url: pageData.urlPath,
+                                image: pageData.images.cart,
+                                name: pageData.name,
+                            }}
+                        />
+                    </div>
+                </div>
                 {pageData.description}
-                <AddToCartButton
-                    item={{
-                        id: pageData.id,
-                        price: getActivePrice(pageData.price) + "",
-                        url: pageData.urlPath,
-                        image: pageData.images.cart,
-                        name: pageData.name,
-                    }}
-                />
             </Container>
         </Layout>
     );
