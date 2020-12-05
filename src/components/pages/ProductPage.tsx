@@ -9,6 +9,7 @@ import { Breadcrumbs } from "../Breadcrumbs";
 import { ImageGallery } from "../ImageGallery";
 import Image from "next/image";
 import { TabbedInfoBox } from "../TabbedInfoBox";
+import { FlowerHr } from "../FlowerHr";
 
 const Container = styled.div`
     .product-name-img-cont {
@@ -49,7 +50,11 @@ const Container = styled.div`
     }
 
     .add-to-cart {
-        margin-bottom: ${(props) => props.theme.SPACING.SECTION_INSIDE};
+        margin-bottom: ${(props) => props.theme.SPACING.SECTION_MARGIN};
+    }
+
+    .flower-hr {
+        margin-bottom: ${(props) => props.theme.SPACING.SECTION_MARGIN};
     }
 `;
 
@@ -95,6 +100,9 @@ export function ProductPage({ pageData }: ProductPageProps) {
                             }}
                         />
                     </div>
+                </div>
+                <div className="flower-hr">
+                    <FlowerHr />
                 </div>
                 <TabbedInfoBox
                     tabs={[
