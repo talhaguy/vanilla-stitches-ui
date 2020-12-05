@@ -8,6 +8,7 @@ import { PriceData } from "../../models";
 import { Breadcrumbs } from "../Breadcrumbs";
 import { ImageGallery } from "../ImageGallery";
 import Image from "next/image";
+import { TabbedInfoBox } from "../TabbedInfoBox";
 
 const Container = styled.div`
     .product-name-img-cont {
@@ -95,7 +96,19 @@ export function ProductPage({ pageData }: ProductPageProps) {
                         />
                     </div>
                 </div>
-                {pageData.description}
+                <TabbedInfoBox
+                    tabs={[
+                        {
+                            name: "Details",
+                            content: pageData.description,
+                        },
+                        {
+                            name: "Shipping",
+                            content:
+                                "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel dolor diam. Proin sed porta odio, et viverra diam. Donec pretium nisi nunc, vel rutrum velit blandit ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis fermentum sit amet ligula in ultricies. Phasellus imperdiet neque felis. Nulla consequat leo id purus feugiat, eu pharetra turpis blandit. Nunc fermentum nisi vehicula, vehicula enim at, cursus tortor. Phasellus euismod facilisis eleifend. Ut ac viverra neque. Etiam auctor felis ut nisl dignissim, ac blandit orci porta. Maecenas et eleifend dui, non tempor ex. Mauris in pharetra dolor, sed finibus urna. Maecenas id laoreet risus. Donec nulla enim, sollicitudin et ex in, scelerisque interdum nisi.</p>",
+                        },
+                    ]}
+                />
             </Container>
         </Layout>
     );
