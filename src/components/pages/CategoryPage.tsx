@@ -2,8 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { Layout } from "../../components/Layout";
 import { CategoryPageData } from "../../pageData";
+import { FlowerHr } from "../FlowerHr";
 import { HeroImage } from "../HeroImage";
 import { ProductList } from "../ProductList";
+
+const Container = styled.div`
+    .description {
+        margin: ${(props) => props.theme.SPACING.SECTION_MARGIN} 0;
+        font: 1.8rem ${(props) => props.theme.FONTS.SANS};
+    }
+
+    .flower-hr {
+        margin-bottom: ${(props) => props.theme.SPACING.SECTION_MARGIN};
+    }
+`;
 
 const Title = styled.h1`
     margin: 0;
@@ -17,12 +29,19 @@ export interface CategoryPageProps {
 export function CategoryPage({ pageData }: CategoryPageProps) {
     return (
         <Layout>
-            <HeroImage imagePath={pageData.heroImage}>
-                <Title>{pageData.name}</Title>
-            </HeroImage>
-            {pageData.description}
-            <p>{pageData.description}</p>
-            <ProductList products={pageData.products} />
+            <Container>
+                <HeroImage imagePath={pageData.heroImage}>
+                    <Title>{pageData.name}</Title>
+                </HeroImage>
+                <div
+                    className="description"
+                    dangerouslySetInnerHTML={{ __html: pageData.description }}
+                />
+                <div className="flower-hr">
+                    <FlowerHr />
+                </div>
+                <ProductList products={pageData.products} />
+            </Container>
         </Layout>
     );
 }
