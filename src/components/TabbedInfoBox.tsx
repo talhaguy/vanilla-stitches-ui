@@ -69,6 +69,7 @@ export function TabbedInfoBox({ tabs }: TabbedInfoBoxProps) {
             <div
                 className={"tab " + activeClassName}
                 onClick={() => setActiveTabIndex(i)}
+                key={i}
             >
                 {tab.name}
             </div>
@@ -78,6 +79,7 @@ export function TabbedInfoBox({ tabs }: TabbedInfoBoxProps) {
             <div
                 className={"content " + activeClassName}
                 dangerouslySetInnerHTML={{ __html: tab.content }}
+                key={i}
             />
         );
     });
