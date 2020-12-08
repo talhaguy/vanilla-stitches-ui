@@ -40,11 +40,6 @@ export interface ImageGalleryProps {
 
 export function ImageGallery({ images }: ImageGalleryProps) {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    console.log(
-        "selectedImagesIndex",
-        selectedImageIndex,
-        images[selectedImageIndex].large
-    );
 
     return (
         <Container>

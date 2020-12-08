@@ -11,7 +11,6 @@ import { getUIOverrides } from "../snipcart";
 // this is ONLY run on the server
 class MyDocument extends Document {
     constructor(props) {
-        console.log("in MyDocument");
         super(props);
     }
 

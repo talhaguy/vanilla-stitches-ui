@@ -18,7 +18,6 @@ export interface BreadcrumbProps {
 }
 
 export function Breadcrumbs({ categories }: BreadcrumbProps) {
-    console.log(categories);
     return (
         <Container>
             {categories.map((category, i, arr) => (

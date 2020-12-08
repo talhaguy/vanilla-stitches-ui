@@ -32,12 +32,6 @@ function MyApp({ appProps: { Component, pageProps } }: MyAppProps) {
 }
 
 function AppContainer(appProps: AppProps) {
-    console.log("in MyApp", appProps.pageProps);
-    console.log(
-        "DEBUG: is window in MyApp?",
-        typeof window !== "undefined" ? window : null
-    );
-
     return (
         <>
             <Head>
