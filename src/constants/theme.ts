@@ -11,6 +11,7 @@ export const THEME: DefaultTheme = {
         LIGHT_PINK: "#FFCDCD",
         DARK_TURQOISE: "#91CEC6",
         BLOOD_RED: "#990000",
+        BRIGHT_RED: "#FF0000",
         GOLD: "#B78905",
         WHITE: "#FFFFFF",
     },

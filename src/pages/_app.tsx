@@ -6,6 +6,7 @@ import { NavigationContext, WindowContext } from "../context";
 import {
     SnipCartMetaStateContext,
     SnipCartMetaStateMap,
+    useCustomizePaymentForm,
     useResetHistory,
 } from "../snipcart";
 
@@ -25,6 +26,7 @@ const snipCartMetaState: SnipCartMetaStateMap = {
 
 function MyApp({ appProps: { Component, pageProps } }: MyAppProps) {
     useResetHistory();
+    useCustomizePaymentForm();
 
     return <Component {...pageProps} />;
 }

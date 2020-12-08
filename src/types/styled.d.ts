@@ -13,6 +13,7 @@ declare module "styled-components" {
             LIGHT_PINK: string;
             DARK_TURQOISE: string;
             BLOOD_RED: string;
+            BRIGHT_RED: string;
             GOLD: string;
             WHITE: string;
         };

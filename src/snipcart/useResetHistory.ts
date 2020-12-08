@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSnipCartGlobal } from "./useSnipCartGlobal";
 

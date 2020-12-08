@@ -1,7 +1,8 @@
 import React, { ReactNode, useContext } from "react";
 import styled from "styled-components";
 import { NavigationContext } from "../context/NavigationContext";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "./styles/GlobalStyle";
+import { SnipCartStyle } from "../snipcart";
 import { Header } from "./Header";
 import { Navigation } from "./Navigation";
 import { Normalize } from "./Normalize";
@@ -21,6 +22,7 @@ export function Layout({ children }: LayoutProps) {
         <>
             <Normalize />
             <GlobalStyle />
+            <SnipCartStyle />
             <Header />
             <Navigation navigationLinkGroups={topNavigationLinkGroups} />
             <PageContainer>{children}</PageContainer>

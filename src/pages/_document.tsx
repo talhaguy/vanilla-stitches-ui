@@ -6,6 +6,7 @@ import Document, {
     DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { getUIOverrides } from "../snipcart";
 
 // this is ONLY run on the server
 class MyDocument extends Document {
@@ -74,6 +75,8 @@ class MyDocument extends Document {
                         hidden
                         id="snipcart"
                         data-api-key={process.env.SNIP_CART_PUBLIC_API_KEY}
+                        data-currency="php"
+                        dangerouslySetInnerHTML={{ __html: getUIOverrides() }}
                     ></div>
                 </body>
             </Html>
