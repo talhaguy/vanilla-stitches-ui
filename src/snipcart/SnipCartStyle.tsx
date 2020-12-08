@@ -124,6 +124,18 @@ export const SnipCartStyle = createGlobalStyle`
         fill: ${(props) => props.theme.COLORS.DARK_TURQOISE};
     }
 
+    .snipcart-billing-completed,
+    .snipcart-shipping-completed {
+        .snipcart__box--badge {
+            background-color: ${(props) => props.theme.COLORS.DARK_TURQOISE};
+            border: none;
+
+            .snipcart__icon path {
+                fill: ${(props) => props.theme.COLORS.WHITE};
+            }
+        }
+    }
+
     // order summary
 
     .snipcart-cart-summary {
@@ -253,5 +265,39 @@ export const SnipCartStyle = createGlobalStyle`
 
     .snipcart-payment-methods-list-item {
         border: 1px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
+    }
+
+    // order confirmation
+
+    .snipcart-order__details {
+        .snipcart-order__box__header {
+            .snipcart__box--badge {
+                .snipcart__icon {
+                    path {
+                        fill: ${(props) => props.theme.COLORS.WHITE};
+                    }
+                }
+            }
+        }
+
+        .snipcart__box {
+            margin-top: 20px;
+
+            .snipcart__icon {
+                path {
+                    fill: ${(props) => props.theme.COLORS.DARK_TURQOISE};
+                }
+            }
+        }
+
+        .snipcart-cart-summary-expanded-item__quantity {
+            font-size: 1.8rem;
+            line-height: 20px;
+            font-family: 'PT Sans',sans-serif;
+        }
+
+        .snipcart-order__invoice-number--highlight {
+            margin-left: 5px;
+        }
     }
 `;

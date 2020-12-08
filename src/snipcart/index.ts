@@ -16,7 +16,8 @@ export { useCustomizePaymentForm } from "./useCustomizePaymentForm";
 import { CART_SUMMARY } from "./uiOverrides/cartSummary";
 import { ADDRESS_FIELDS } from "./uiOverrides/addressFields";
 import { PAYMENT_METHODS_LIST_ITEM } from "./uiOverrides/paymentMethodsListItem";
+import { ORDER } from "./uiOverrides/order";
 export const getUIOverrides = () =>
-    `${CART_SUMMARY}${ADDRESS_FIELDS}${PAYMENT_METHODS_LIST_ITEM}`;
+    `${CART_SUMMARY}${ADDRESS_FIELDS}${PAYMENT_METHODS_LIST_ITEM}${ORDER}`;
 
 export { SnipCartStyle } from "./SnipCartStyle";
