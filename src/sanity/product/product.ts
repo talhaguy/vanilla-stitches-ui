@@ -12,10 +12,16 @@ export async function fetchAllProductSlugs(client: SanityClient) {
     return data as string[];
 }
 
+export interface SanityProductPageCategory
+    extends Omit<ProductPageCategory, "urlPath"> {
+    slug: string;
+}
+
 export interface SanityProductData
-    extends Omit<ProductPageData, "description" | "urlPath"> {
+    extends Omit<ProductPageData, "description" | "urlPath" | "categories"> {
     description: any[];
     slug: string;
+    categories: SanityProductPageCategory[];
 }
 
 export async function fetchProductBySlug(client: SanityClient, slug: string) {

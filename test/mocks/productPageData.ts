@@ -2,7 +2,12 @@ import { ProductPageData } from "../../src/pageData";
 
 export const productPageData: ProductPageData = {
     id: "P000001",
-    categories: ["colorful"],
+    categories: [
+        {
+            name: "Colorful",
+            urlPath: "colorful",
+        },
+    ],
     name: "Flower Pouch",
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In magna felis, hendrerit eget molestie eget, mollis in enim. Aliquam ut pretium massa, eget porttitor leo. In auctor porta euismod. Nulla imperdiet eu lorem quis lobortis. Cras accumsan velit quis laoreet tincidunt. Quisque aliquet velit consequat, scelerisque libero et, condimentum dui. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus ullamcorper metus quis metus posuere, eget porta massa mollis. Donec viverra porta risus non ultrices. Suspendisse urna libero, vehicula vitae commodo quis, lacinia nec ipsum. Ut ipsum eros, mattis vitae eros nec, placerat condimentum lacus. Vestibulum tortor velit, accumsan ut odio feugiat, dignissim imperdiet mauris. Phasellus congue est non ultrices placerat. Curabitur ut mauris eleifend, tincidunt elit sit amet, porta felis. Quisque commodo lacus id neque scelerisque, tincidunt tristique felis faucibus. Sed bibendum vehicula eleifend.
         Donec tempus iaculis diam, ut aliquam tortor pretium nec. Maecenas luctus pulvinar lorem at lacinia. Etiam ut nulla at est rutrum pharetra eget ac sapien. Nunc euismod malesuada eros, non condimentum lectus ultrices eget. Suspendisse diam ante, consequat et nibh et, efficitur consequat neque. Fusce a convallis mauris. Nullam elementum, massa sed molestie egestas, risus neque tempor magna, nec tristique dui ex eget quam. Morbi non venenatis orci, dictum fermentum nunc. Donec ac risus nec mi porttitor bibendum. Phasellus sit amet consequat risus, nec varius urna. Donec placerat mi non massa rutrum, et scelerisque dolor congue. Aliquam erat volutpat.
