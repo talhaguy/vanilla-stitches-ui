@@ -81,7 +81,8 @@ export const SnipCartStyle = createGlobalStyle`
 
     // header mini cart
 
-    .snipcart-modal__header-summary-title .snipcart__icon:first-child {
+    .snipcart-cart-header__count .snipcart__icon:first-child, /* cart */
+    .snipcart-modal__header-summary-title .snipcart__icon:first-child /* checkout */ {
         display: none;
     }
 
@@ -89,7 +90,8 @@ export const SnipCartStyle = createGlobalStyle`
         fill: ${(props) => props.theme.COLORS.GOLD};
     }
 
-    .snipcart-modal__header-summary-title::before {
+    .snipcart-cart-header__count::before, /* cart */
+    .snipcart-modal__header-summary-title::before /* checkout */ {
         content: "";
         display: block;
         background-image: url("/icon/shopping_bag-black-18dp.svg");
@@ -97,6 +99,15 @@ export const SnipCartStyle = createGlobalStyle`
         width: 20px;
         height: 20px;
         margin-right: 5px;
+    }
+
+    // cart footer
+
+    .snipcart-cart__footer {
+        @media (min-width:768px) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     // step panel
@@ -144,17 +155,18 @@ export const SnipCartStyle = createGlobalStyle`
 
     // input
 
-    .snipcart-input {
+    /* don't apply these styles to cart promo input */
+    .snipcart-input:not(.snipcart-input--no-style) {
         border: 1px solid ${(props) => props.theme.COLORS.DARK_GRAY};
-    }
 
-    .snipcart-input:focus-within {
-        border: 2px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
-        box-shadow: none;
-    }
+        &:focus-within {
+            border: 2px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
+            box-shadow: none;
+        }
 
-    .snipcart-input:focus-within .snipcart-input__input {
-        padding-left: 15px;
+        &:focus-within .snipcart-input__input {
+            padding-left: 15px;
+        }
     }
 
     .snipcart-input--invalid {
@@ -173,6 +185,30 @@ export const SnipCartStyle = createGlobalStyle`
 
     .snipcart-form__label {
         font-size: 1.4rem;
+    }
+
+    // cart promo button and input
+
+    .snipcart-discount-box__button {
+        border: 1px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
+    }
+
+    .snipcart-discount-box__form{
+        border: 1px solid ${(props) => props.theme.COLORS.BLACK};
+
+        .snipcart-input {
+            height: 54px;
+        }
+
+        &:focus-within {
+            border: 2px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
+            padding-left: 15px;
+            padding-right: 15px;
+
+            .snipcart-input {
+                height: 52px;
+            }
+        }
     }
 
     // checkbox
@@ -205,6 +241,7 @@ export const SnipCartStyle = createGlobalStyle`
 
     // button
 
+    .snipcart-cart-button,
     .snipcart-cart-button--highlight {
         background-image: none;
         background-color: ${(props) => props.theme.COLORS.DARK_TURQOISE};
@@ -214,6 +251,12 @@ export const SnipCartStyle = createGlobalStyle`
         letter-spacing: 1px;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         padding: 15px;
+
+        .snipcart__icon {
+            path {
+                fill: ${(props) => props.theme.COLORS.WHITE};
+            }
+        }
     }
 
     // link
@@ -239,6 +282,21 @@ export const SnipCartStyle = createGlobalStyle`
     .snipcart-form__select:focus {
         border: 2px solid ${(props) => props.theme.COLORS.DARK_TURQOISE};
         padding: 15px;
+    }
+
+    // quantity box
+
+    .snipcart-item-quantity__quantity {
+        border: 1px solid ${(props) => props.theme.COLORS.BLACK};
+
+        .snipcart__icon {
+            border-radius: 20px;
+            background-color: ${(props) => props.theme.COLORS.DARK_TURQOISE};
+
+            path {
+                fill: ${(props) => props.theme.COLORS.WHITE};
+            }
+        }
     }
 
     // shipping checkbox
