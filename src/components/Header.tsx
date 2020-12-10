@@ -6,6 +6,7 @@ import { MenuButton } from "./MenuButton";
 import { MiniCart } from "./MiniCart";
 import { Navigation } from "./Navigation";
 import { NavigationContext } from "../context";
+import Link from "next/link";
 
 const Container = styled.header`
     background-color: ${(props) => props.theme.COLORS.LIGHT_PINK};
@@ -58,12 +59,16 @@ export function Header(props: HeaderProps) {
             <Container>
                 <div className="content">
                     <MenuButton toggleNav={toggleNav} />
-                    <Image
-                        src="/logo/logo_as_paths_black.svg"
-                        width={177}
-                        height={67}
-                        className="logo-img"
-                    />
+                    <Link href="/">
+                        <a>
+                            <Image
+                                src="/logo/logo_as_paths_black.svg"
+                                width={177}
+                                height={67}
+                                className="logo-img"
+                            />
+                        </a>
+                    </Link>
                     <MiniCart numItems={numItems} />
                 </div>
                 <div className="highlight"></div>

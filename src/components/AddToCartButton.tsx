@@ -1,4 +1,4 @@
-import { Button } from "./Button";
+import { Button, ButtonType } from "./Button";
 
 export interface SnipCartAddToCartDataAttributes {
     id: string;
@@ -24,7 +24,7 @@ export function AddToCartButton({
             data-item-image={image}
             data-item-name={name}
         >
-            <Button label={"Add to Cart"} />
+            <Button label={"Add to Cart"} type={ButtonType.Large} />
         </div>
     );
 }
