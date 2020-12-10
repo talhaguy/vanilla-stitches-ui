@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { useSnipCartGlobal } from "../snipcart";
 import { MenuButton } from "./MenuButton";
 import { MiniCart } from "./MiniCart";
+import { Navigation } from "./Navigation";
+import { NavigationContext } from "../context";
 
 const Container = styled.header`
     background-color: ${(props) => props.theme.COLORS.LIGHT_PINK};
@@ -33,28 +35,44 @@ const Container = styled.header`
 export interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
+    const { topNavigationLinkGroups } = useContext(NavigationContext);
     const [_, snipCartRunOnInit] = useSnipCartGlobal();
+
     const [numItems, setNumItems] = useState(0);
+    const [showNav, setShowNav] = useState(false);
+    console.log("header render", showNav);
 
     useEffect(() => {
+        console.log("header useeffect");
         snipCartRunOnInit((snipCart) => {
             setNumItems(snipCart.store.getState().cart.items.count);
         });
     });
 
+    const toggleNav = () => {
+        setShowNav(!showNav);
+    };
+
     return (
-        <Container>
-            <div className="content">
-                <MenuButton />
-                <Image
-                    src="/logo/logo_as_paths_black.svg"
-                    width={177}
-                    height={67}
-                    className="logo-img"
-                />
-                <MiniCart numItems={numItems} />
-            </div>
-            <div className="highlight"></div>
-        </Container>
+        <>
+            <Container>
+                <div className="content">
+                    <MenuButton toggleNav={toggleNav} />
+                    <Image
+                        src="/logo/logo_as_paths_black.svg"
+                        width={177}
+                        height={67}
+                        className="logo-img"
+                    />
+                    <MiniCart numItems={numItems} />
+                </div>
+                <div className="highlight"></div>
+            </Container>
+            <Navigation
+                navigationLinkGroups={topNavigationLinkGroups}
+                showNav={showNav}
+                toggleNav={toggleNav}
+            />
+        </>
     );
 }

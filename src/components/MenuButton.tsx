@@ -9,9 +9,13 @@ const Container = styled(ButtonStyleReset)`
     }
 `;
 
-export function MenuButton() {
+export interface MenuButtonProps {
+    toggleNav: () => void;
+}
+
+export function MenuButton({ toggleNav }: MenuButtonProps) {
     return (
-        <Container>
+        <Container onClick={toggleNav}>
             <Image
                 src="/icon/menu-black-18dp.svg"
                 width={36}

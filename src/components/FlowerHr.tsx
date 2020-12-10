@@ -21,9 +21,11 @@ const Container = styled.div<ContainerProps>`
     }
 `;
 
-export interface FlowerHrProps {}
+export interface FlowerHrProps {
+    showFlowers: boolean;
+}
 
-export function FlowerHr({}: FlowerHrProps) {
+export function FlowerHr({ showFlowers }: FlowerHrProps) {
     const IMG_WIDTH = 650;
     const IMG_HEIGHT = 59;
 
@@ -31,7 +33,11 @@ export function FlowerHr({}: FlowerHrProps) {
         <Container imgWidth={IMG_WIDTH} imgHeight={IMG_HEIGHT}>
             <div className="img-cont">
                 <Image
-                    src="/flower/squiggly-stitch_teal_with_flowers.svg"
+                    src={
+                        showFlowers
+                            ? "/flower/squiggly-stitch_teal_with_flowers.svg"
+                            : "/misc/squiggly-stitch_teal.svg"
+                    }
                     width={IMG_WIDTH}
                     height={IMG_HEIGHT}
                     layout="fixed"

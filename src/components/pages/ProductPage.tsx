@@ -102,7 +102,7 @@ export function ProductPage({ pageData }: ProductPageProps) {
                     </div>
                 </div>
                 <div className="flower-hr">
-                    <FlowerHr />
+                    <FlowerHr showFlowers={true} />
                 </div>
                 <TabbedInfoBox
                     tabs={[

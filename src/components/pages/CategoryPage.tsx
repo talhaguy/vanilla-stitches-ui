@@ -38,7 +38,7 @@ export function CategoryPage({ pageData }: CategoryPageProps) {
                     dangerouslySetInnerHTML={{ __html: pageData.description }}
                 />
                 <div className="flower-hr">
-                    <FlowerHr />
+                    <FlowerHr showFlowers={true} />
                 </div>
                 <ProductList products={pageData.products} />
             </Container>
