@@ -14,11 +14,10 @@ export async function fetchLandingPageDataBySlug(slug: string) {
         },
         testimonials: [
             {
-                quote: [
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam est nulla, facilisis iaculis volutpat et, aliquam eu nibh. Ut rutrum ultricies arcu, ut congue dui elementum sed. Aenean pretium mauris risus, eget interdum ante maximus nec. Aenean elementum nibh odio, ac pellentesque justo lobortis id. Vivamus rhoncus enim a tincidunt pretium. In gravida viverra metus, in pharetra orci commodo ac. Phasellus pellentesque dui euismod arcu egestas venenatis. Nullam in leo sem. Sed id facilisis nunc.",
-                ],
+                quote:
+                    "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam est nulla, facilisis iaculis volutpat et, aliquam eu nibh. Ut rutrum ultricies arcu, ut congue dui elementum sed. Aenean pretium mauris risus, eget interdum ante maximus nec. Aenean elementum nibh odio, ac pellentesque justo lobortis id. Vivamus rhoncus enim a tincidunt pretium. In gravida viverra metus, in pharetra orci commodo ac. Phasellus pellentesque dui euismod arcu egestas venenatis. Nullam in leo sem. Sed id facilisis nunc.</p>",
                 author: "Fakhruddin Burney",
-                image: "http://lorempixel.com/200/200/fashion/",
+                image: "/misc/sample-pouches.png",
             },
         ],
     };

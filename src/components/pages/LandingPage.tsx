@@ -5,6 +5,8 @@ import { LandingPageData } from "../../pageData";
 import { CollectionTile } from "../CollectionTile";
 import { FlowerHr } from "../FlowerHr";
 import { SectionHeading } from "../SectionHeading";
+import { Testimonial } from "../Testimonial";
+import { TestimonialCollection } from "../TestimonialCollection";
 
 const Container = styled.div`
     .collection-tile + .collection-tile {
@@ -77,25 +79,14 @@ export function LandingPage({ pageData }: LandingPageProps) {
                 <div className="flower-hr">
                     <FlowerHr showFlowers={true} />
                 </div>
-                <div>
-                    <ul>
-                        {pageData.testimonials.map((testimonial, i) => {
-                            return (
-                                <li key={i}>
-                                    <div>
-                                        <img src={testimonial.image} />
-                                    </div>
-                                    <blockquote>
-                                        {testimonial.quote.map((block, j) => {
-                                            return <p key={j}>{block}</p>;
-                                        })}
-                                        <footer>- {testimonial.author}</footer>
-                                    </blockquote>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
+                <section>
+                    <div>
+                        <SectionHeading title={"Testimonials"} />
+                    </div>
+                    <TestimonialCollection
+                        testimonials={pageData.testimonials}
+                    />
+                </section>
             </Container>
         </Layout>
     );

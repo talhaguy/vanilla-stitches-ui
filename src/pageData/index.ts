@@ -3,7 +3,7 @@ export type {
     ProductOnCategoryPage,
 } from "./models/CategoryPageData";
 export type { ContentPageData } from "./models/ContentPageData";
-export type { LandingPageData } from "./models/LandingPageData";
+export type { Testimonial, LandingPageData } from "./models/LandingPageData";
 export type {
     ProductPageData,
     ProductPageCategory,

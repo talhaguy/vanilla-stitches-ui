@@ -1,5 +1,5 @@
 export interface Testimonial {
-    quote: string[];
+    quote: string;
     author: string;
     image: string;
 }
