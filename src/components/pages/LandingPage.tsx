@@ -1,7 +1,10 @@
+import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import { Layout } from "../../components/Layout";
 import { LandingPageData } from "../../pageData";
+import { Button, ButtonType } from "../Button";
+import { CatchyContent } from "../CatchyContent";
 import { CollectionTile } from "../CollectionTile";
 import { FlowerHr } from "../FlowerHr";
 import { SectionHeading } from "../SectionHeading";
@@ -15,6 +18,10 @@ const Container = styled.div`
 
     .flower-hr {
         margin: ${(props) => props.theme.SPACING.SECTION_MARGIN} 0;
+
+        &-catchy {
+            margin-bottom: 20px;
+        }
     }
 
     .section-text {
@@ -24,6 +31,10 @@ const Container = styled.div`
         &:first-of-type {
             margin-top: 0;
         }
+    }
+
+    .shop-now-btn {
+        margin: ${(props) => props.theme.SPACING.SECTION_INSIDE} 0;
     }
 `;
 
@@ -40,15 +51,25 @@ export function LandingPage({ pageData }: LandingPageProps) {
                     <img src={pageData.imageAlpha} />
                 </div>
                 <p>{pageData.subTitle}</p>
-                <div>
-                    <img src={pageData.imageBeta} />
+                <div className="flower-hr-catchy">
+                    <FlowerHr showFlowers={true} />
                 </div>
-                <div>
-                    <h2>{pageData.mainTextSection.title}</h2>
-                    {pageData.mainTextSection.content.map((block, i) => {
-                        return <p key={i}>{block}</p>;
-                    })}
-                </div>
+                <section>
+                    <CatchyContent
+                        title={pageData.mainTextSection.title}
+                        content={pageData.mainTextSection.content}
+                    />
+                    <div className="shop-now-btn">
+                        <Button type={ButtonType.Large} label="Shop Now" />
+                    </div>
+                    <Image
+                        className="img-beta"
+                        src={pageData.imageBeta}
+                        layout="responsive"
+                        width="333"
+                        height="241"
+                    />
+                </section>
                 <div className="flower-hr">
                     <FlowerHr showFlowers={true} />
                 </div>

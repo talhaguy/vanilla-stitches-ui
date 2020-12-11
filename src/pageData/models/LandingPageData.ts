@@ -10,7 +10,7 @@ export interface LandingPageData {
     subTitle: string;
     mainTextSection: {
         title: string;
-        content: string[];
+        content: string;
     };
     testimonials: Testimonial[];
 }
