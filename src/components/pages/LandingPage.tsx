@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Layout } from "../../components/Layout";
 import { LandingPageData } from "../../pageData";
-import { Button, ButtonType } from "../Button";
+import { Button, ButtonSize, ButtonType } from "../Button";
 import { CatchyContent } from "../CatchyContent";
 import { CollectionTile } from "../CollectionTile";
 import { FlowerHr } from "../FlowerHr";
@@ -60,7 +60,12 @@ export function LandingPage({ pageData }: LandingPageProps) {
                         content={pageData.mainTextSection.content}
                     />
                     <div className="shop-now-btn">
-                        <Button type={ButtonType.Large} label="Shop Now" />
+                        <Button
+                            type={ButtonType.Anchor}
+                            size={ButtonSize.Large}
+                            linkForAnchor={"/category/pink-pouches"}
+                            label="Shop Now"
+                        />
                     </div>
                     <Image
                         className="img-beta"

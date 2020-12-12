@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { Button, ButtonType } from "./Button";
+import { Button, ButtonSize, ButtonType } from "./Button";
 
 const Container = styled.div`
     .link {
@@ -52,7 +52,11 @@ export function CollectionTile({
                             className="img"
                         />
                         <div className="btn-cont">
-                            <Button label={label} type={ButtonType.Small} />
+                            <Button
+                                label={label}
+                                type={ButtonType.Button}
+                                size={ButtonSize.Small}
+                            />
                         </div>
                     </div>
                 </a>
