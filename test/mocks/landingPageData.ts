@@ -3,12 +3,10 @@ import { LandingPageData } from "../../src/pageData";
 export const landingPageData: LandingPageData = {
     imageAlpha: "http://lorempixel.com/400/400/fashion/",
     imageBeta: "http://lorempixel.com/300/300/fashion/",
-    subTitle: "Mauris facilisis iaculis libero pulvinar blandit.",
     mainTextSection: {
         title: "Our Story",
-        content: [
+        content:
             "Etiam non felis id lacus volutpat posuere. Cras imperdiet neque sed tortor commodo, eu facilisis sem tincidunt. Maecenas non tincidunt quam. Maecenas tellus nulla, eleifend eu consequat quis, pellentesque quis sapien. Aenean et nunc semper odio varius commodo. In ultricies, orci ac scelerisque blandit, justo magna dapibus lectus, nec tristique mi ipsum eu turpis. Cras congue sit amet massa quis accumsan. Nullam maximus erat at mi tincidunt convallis. Nullam ultricies vestibulum dolor at bibendum. Morbi accumsan id est ut pharetra. Nullam condimentum, urna vel aliquam consequat, quam ante molestie magna, et semper mauris est vel lectus. Nam laoreet, mi quis euismod ornare, ipsum orci pellentesque lectus, vitae maximus diam magna a felis.",
-        ],
     },
     testimonials: [
         {
