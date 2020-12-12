@@ -49,7 +49,7 @@ class MyDocument extends Document {
                     {/* fonts */}
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=PT+Sans&family=PT+Serif&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=PT+Sans&family=PT+Serif:ital@0;1&display=swap"
                         rel="stylesheet"
                     />
 

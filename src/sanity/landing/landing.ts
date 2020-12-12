@@ -5,7 +5,6 @@ export async function fetchLandingPageDataBySlug(slug: string) {
     const data: LandingPageData = {
         imageAlpha: "http://lorempixel.com/400/400/fashion/",
         imageBeta: "/misc/sample-pouches.png",
-        subTitle: "Mauris facilisis iaculis libero pulvinar blandit.",
         mainTextSection: {
             title: "Our Story",
             content:

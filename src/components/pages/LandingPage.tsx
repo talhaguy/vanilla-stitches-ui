@@ -7,8 +7,8 @@ import { Button, ButtonSize, ButtonType } from "../Button";
 import { CatchyContent } from "../CatchyContent";
 import { CollectionTile } from "../CollectionTile";
 import { FlowerHr } from "../FlowerHr";
+import { HeroImageAlpha } from "../HeroImageAlpha";
 import { SectionHeading } from "../SectionHeading";
-import { Testimonial } from "../Testimonial";
 import { TestimonialCollection } from "../TestimonialCollection";
 
 const Container = styled.div`
@@ -20,6 +20,7 @@ const Container = styled.div`
         margin: ${(props) => props.theme.SPACING.SECTION_MARGIN} 0;
 
         &-catchy {
+            margin-top: ${(props) => props.theme.SPACING.SECTION_MARGIN};
             margin-bottom: 20px;
         }
     }
@@ -46,11 +47,9 @@ export function LandingPage({ pageData }: LandingPageProps) {
     return (
         <Layout>
             <Container>
-                <h1>Vanilla Stitches</h1>
-                <div>
-                    <img src={pageData.imageAlpha} />
-                </div>
-                <p>{pageData.subTitle}</p>
+                <HeroImageAlpha
+                    text={["finding joy in each", "handmade creation"]}
+                />
                 <div className="flower-hr-catchy">
                     <FlowerHr showFlowers={true} />
                 </div>
