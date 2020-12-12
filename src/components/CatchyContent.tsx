@@ -7,6 +7,7 @@ const Container = styled.div`
     position: relative;
     overflow: hidden;
     margin: 0 -${(props) => props.theme.SPACING.PAGE_MARGIN};
+    padding-bottom: 30px;
 
     .content {
         position: relative;
@@ -30,8 +31,12 @@ const Container = styled.div`
     }
 
     .img-2-cont {
-        bottom: 50px;
+        bottom: 0;
         right: -80px;
+
+        @media (min-width: 710px) {
+            display: none;
+        }
     }
 
     .stitch-1-cont,
@@ -42,11 +47,15 @@ const Container = styled.div`
     }
 
     .stitch-1-cont {
-        bottom: 0;
+        bottom: 25px;
         left: 19px;
         width: 341px;
         transform: rotate(-90deg);
         transform-origin: left;
+
+        @media (min-width: 440px) {
+            display: none;
+        }
     }
 
     .stitch-2-cont {
@@ -55,6 +64,10 @@ const Container = styled.div`
         width: 184px;
         transform: rotate(-90deg);
         transform-origin: right;
+
+        @media (min-width: 440px) {
+            display: none;
+        }
     }
 `;
 
