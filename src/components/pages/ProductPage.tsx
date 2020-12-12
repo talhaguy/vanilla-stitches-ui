@@ -12,6 +12,8 @@ import { TabbedInfoBox } from "../TabbedInfoBox";
 import { FlowerHr } from "../FlowerHr";
 
 const Container = styled.div`
+    margin-top: 10px;
+
     .product-name-img-cont {
         position: relative;
         height: 161px;
