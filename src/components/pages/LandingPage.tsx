@@ -1,6 +1,7 @@
-import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
+import Head from "next/head";
+import Image from "next/image";
 import { Layout } from "../../components/Layout";
 import { LandingPageData } from "../../pageData";
 import { Button, ButtonSize, ButtonType } from "../Button";
@@ -47,6 +48,9 @@ export function LandingPage({ pageData }: LandingPageProps) {
     return (
         <Layout>
             <Container>
+                <Head>
+                    <title>{pageData.name}</title>
+                </Head>
                 <HeroImageAlpha
                     text={["finding joy in each", "handmade creation"]}
                 />

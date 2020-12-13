@@ -3,6 +3,7 @@ import { LandingPageData } from "../../pageData";
 // TODO: temporarily using hardcoded data.
 export async function fetchLandingPageDataBySlug(slug: string) {
     const data: LandingPageData = {
+        name: "Vanilla Stitches",
         imageAlpha: "http://lorempixel.com/400/400/fashion/",
         imageBeta: "/misc/sample-pouches.png",
         mainTextSection: {

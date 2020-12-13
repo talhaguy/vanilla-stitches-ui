@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Head from "next/head";
 import { Layout } from "../../components/Layout";
 import { ContentPageData } from "../../pageData";
 import { HeroImage } from "../HeroImage";
@@ -24,6 +25,9 @@ export function ContentPage({ pageData }: ContentPageProps) {
     return (
         <Layout>
             <Container>
+                <Head>
+                    <title>{pageData.name}</title>
+                </Head>
                 <HeroImage imagePath={pageData.heroImage}>
                     <Title>{pageData.name}</Title>
                 </HeroImage>

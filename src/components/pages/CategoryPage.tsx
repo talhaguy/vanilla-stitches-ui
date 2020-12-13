@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Head from "next/head";
 import { Layout } from "../../components/Layout";
 import { CategoryPageData } from "../../pageData";
 import { FlowerHr } from "../FlowerHr";
@@ -30,12 +31,17 @@ export function CategoryPage({ pageData }: CategoryPageProps) {
     return (
         <Layout>
             <Container>
+                <Head>
+                    <title>{pageData.name}</title>
+                </Head>
                 <HeroImage imagePath={pageData.heroImage}>
                     <Title>{pageData.name}</Title>
                 </HeroImage>
                 <div
                     className="description"
-                    dangerouslySetInnerHTML={{ __html: pageData.description }}
+                    dangerouslySetInnerHTML={{
+                        __html: pageData.description,
+                    }}
                 />
                 <div className="flower-hr">
                     <FlowerHr showFlowers={true} />

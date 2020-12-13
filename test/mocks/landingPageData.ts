@@ -1,6 +1,7 @@
 import { LandingPageData } from "../../src/pageData";
 
 export const landingPageData: LandingPageData = {
+    name: "Vanilla Stitches",
     imageAlpha: "http://lorempixel.com/400/400/fashion/",
     imageBeta: "http://lorempixel.com/300/300/fashion/",
     mainTextSection: {

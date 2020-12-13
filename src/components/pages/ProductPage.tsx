@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Head from "next/head";
 import { Layout } from "../Layout";
 import { ProductPageData } from "../../pageData";
 import { Price, PriceSize } from "../Price";
@@ -72,6 +73,9 @@ export function ProductPage({ pageData }: ProductPageProps) {
     return (
         <Layout>
             <Container>
+                <Head>
+                    <title>{pageData.name}</title>
+                </Head>
                 <div className="product-name-img-cont">
                     <div className="product-name-cont">
                         <Breadcrumbs categories={pageData.categories} />

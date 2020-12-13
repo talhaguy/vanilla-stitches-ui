@@ -5,6 +5,7 @@ export interface Testimonial {
 }
 
 export interface LandingPageData {
+    name: string;
     imageAlpha: string;
     imageBeta: string;
     mainTextSection: {
