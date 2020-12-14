@@ -35,8 +35,7 @@ export function convertSanityProductDataForUI(data: SanityProductData) {
             const { slug, ...otherProperties } = sanityCategory;
             return {
                 ...otherProperties,
-                urlPath:
-                    SlugPathPrepend.CategoryPage + "/" + sanityCategory.slug,
+                urlPath: SlugPathPrepend.CategoryPage + "/" + slug,
             };
         }
     );
@@ -45,7 +44,7 @@ export function convertSanityProductDataForUI(data: SanityProductData) {
     return {
         ...otherProperties,
         description: convertBlocksToHtml(data.description),
-        urlPath: SlugPathPrepend.ProductPage + "/" + data.slug,
+        urlPath: SlugPathPrepend.ProductPage + "/" + slug,
         categories: convertedCategories,
     };
 }

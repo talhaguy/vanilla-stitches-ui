@@ -33,9 +33,11 @@ export async function fetchCategoryBySlug(client: SanityClient, slug: string) {
 export function convertSanityCategoryDataForUI(data: SanityCategoryData) {
     const convertedProducts: ProductOnCategoryPage[] = data.products.map(
         (sanityProduct) => {
-            return Object.assign({}, sanityProduct, {
-                urlPath: SlugPathPrepend.ProductPage + "/" + sanityProduct.slug,
-            });
+            const { slug, ...otherProperties } = sanityProduct;
+            return {
+                ...otherProperties,
+                urlPath: SlugPathPrepend.ProductPage + "/" + slug,
+            };
         }
     );
     const converted: CategoryPageData = Object.assign({}, data, {
