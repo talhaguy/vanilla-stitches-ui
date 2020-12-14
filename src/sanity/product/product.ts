@@ -32,16 +32,20 @@ export async function fetchProductBySlug(client: SanityClient, slug: string) {
 export function convertSanityProductDataForUI(data: SanityProductData) {
     const convertedCategories: ProductPageCategory[] = data.categories.map(
         (sanityCategory) => {
-            return Object.assign({}, sanityCategory, {
+            const { slug, ...otherProperties } = sanityCategory;
+            return {
+                ...otherProperties,
                 urlPath:
                     SlugPathPrepend.CategoryPage + "/" + sanityCategory.slug,
-            });
+            };
         }
     );
-    const converted: ProductPageData = Object.assign({}, data, {
+
+    const { slug, ...otherProperties } = data;
+    return {
+        ...otherProperties,
         description: convertBlocksToHtml(data.description),
         urlPath: SlugPathPrepend.ProductPage + "/" + data.slug,
         categories: convertedCategories,
-    });
-    return converted;
+    };
 }
