@@ -11,7 +11,7 @@ export enum SanityPageType {
 
 export interface SanityNavigationLinkData extends Omit<NavigationLink, "path"> {
     slug: string;
-    type: string;
+    type: SanityPageType;
 }
 
 export interface SanityNavigationLinkGroupData
