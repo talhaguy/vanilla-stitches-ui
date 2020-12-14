@@ -5,7 +5,7 @@ import {
     SlugPathPrepend,
 } from "../../pageData";
 import { convertBlocksToHtml } from "../html";
-import { ALL_CATEGORY_SLUGS, createFetchCategoryBySlugQuery } from "./queries";
+import { ALL_CATEGORY_SLUGS, FETCH_CATEGORY_BY_SLUG_QUERY } from "./queries";
 
 export async function fetchAllCategorySlugs(client: SanityClient) {
     const data = await client.fetch(ALL_CATEGORY_SLUGS);
@@ -24,7 +24,7 @@ export interface SanityCategoryData
 }
 
 export async function fetchCategoryBySlug(client: SanityClient, slug: string) {
-    const data = await client.fetch(createFetchCategoryBySlugQuery(), {
+    const data = await client.fetch(FETCH_CATEGORY_BY_SLUG_QUERY, {
         slug,
     });
     return data as SanityCategoryData;

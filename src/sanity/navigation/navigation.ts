@@ -1,7 +1,7 @@
 import { SanityClient } from "@sanity/client";
 import { NavigationLink, NavigationLinkGroup } from "../../models";
 import { SlugPathPrepend } from "../../pageData";
-import { createFetchNavigationLinksQuery } from "./queries";
+import { FETCH_NAVIGATION_LINKS_QUERY } from "./queries";
 
 export enum SanityPageType {
     Product = "product",
@@ -20,7 +20,7 @@ export interface SanityNavigationLinkGroupData
 }
 
 export async function fetchNavigationLinks(client: SanityClient) {
-    const data = await client.fetch(createFetchNavigationLinksQuery());
+    const data = await client.fetch(FETCH_NAVIGATION_LINKS_QUERY);
     return data as SanityNavigationLinkGroupData[];
 }
 
