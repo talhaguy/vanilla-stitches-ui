@@ -3,7 +3,9 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { ProductPageCategory } from "../pageData";
 
-const Container = styled.div`
+const Container = styled.div.attrs((props) => ({
+    "data-testid": "breadcrumbs-cont",
+}))`
     font: 1.8rem ${(props) => props.theme.FONTS.SANS};
     text-transform: uppercase;
     letter-spacing: 0.1rem;
