@@ -23,6 +23,7 @@ export function AddToCartButton({
             data-item-url={url}
             data-item-image={image}
             data-item-name={name}
+            data-testid="button-cont"
         >
             <Button
                 label={"Add to Cart"}

@@ -56,7 +56,6 @@ export interface ButtonProps {
 }
 
 export function Button({ label, size, type, linkForAnchor }: ButtonProps) {
-    console.log(label, linkForAnchor);
     return (
         <Container buttonType={type} buttonSize={size}>
             {type === ButtonType.Button ? (
