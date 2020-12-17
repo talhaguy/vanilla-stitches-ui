@@ -21,6 +21,8 @@ export function MenuButton({ toggleNav }: MenuButtonProps) {
                 width={36}
                 height={36}
                 className="hamburger-img"
+                role="button"
+                aria-label="Menu"
             />
         </Container>
     );

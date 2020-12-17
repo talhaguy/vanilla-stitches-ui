@@ -5,7 +5,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import { FlowerHr } from "./FlowerHr";
 
-const Container = styled.nav`
+const Container = styled.nav.attrs((props) => ({
+    "data-testid": "navigation-cont",
+}))`
     display: none;
 
     &.show {
@@ -122,6 +124,8 @@ export function Navigation({
                         width="36"
                         height="36"
                         onClick={toggleNav}
+                        role="button"
+                        aria-label="Close"
                     />
                 </div>
                 <div className="links-cont">

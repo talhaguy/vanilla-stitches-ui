@@ -41,10 +41,8 @@ export function Header(props: HeaderProps) {
 
     const [numItems, setNumItems] = useState(0);
     const [showNav, setShowNav] = useState(false);
-    console.log("header render", showNav);
 
     useEffect(() => {
-        console.log("header useeffect");
         snipCartRunOnInit((snipCart) => {
             setNumItems(snipCart.store.getState().cart.items.count);
         });
