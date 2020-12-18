@@ -70,6 +70,7 @@ export function TabbedInfoBox({ tabs }: TabbedInfoBoxProps) {
                 className={"tab " + activeClassName}
                 onClick={() => setActiveTabIndex(i)}
                 key={i}
+                role="button"
             >
                 {tab.name}
             </div>
