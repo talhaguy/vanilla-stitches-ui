@@ -42,11 +42,14 @@ export function Price({ price, size }: PriceProps) {
     return (
         <Container size={size}>
             {isOnSale && (
-                <span className="sale">
+                <span className="sale" data-testid="sale-price">
                     {formatPrice(Currency.PhillipinesPeso, price.salePrice)}
                 </span>
             )}
-            <span className={`list ${isOnSale ? "list-on-sale" : ""}`}>
+            <span
+                className={`list ${isOnSale ? "list-on-sale" : ""}`}
+                data-testid="list-price"
+            >
                 {formatPrice(Currency.PhillipinesPeso, price.listPrice)}
             </span>
         </Container>
