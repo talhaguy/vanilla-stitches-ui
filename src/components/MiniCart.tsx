@@ -39,7 +39,11 @@ export function MiniCart({ numItems }: MiniCartProps) {
                 height={36}
                 className="cart-img"
             />
-            {numItems > 0 && <div className="num-items">{numItems}</div>}
+            {numItems > 0 && (
+                <div className="num-items" data-testid="minicart-numitems">
+                    {numItems}
+                </div>
+            )}
         </Container>
     );
 }
