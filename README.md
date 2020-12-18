@@ -1,5 +1,21 @@
 # Vanilla Stiches UI
 
+The headless storefront UI for the Vanilla Stitches brand.
+
+## Release 1.0
+
+Release 1.0 marks the completion of the mobile site MVP. Users can browse the storefront pages, add products to cart, and checkout. The desktop site is targeted for the next release.
+
+## Tech Stack
+
+-   TypeScript
+-   NextJS
+-   React
+-   Styled Components
+-   Jest
+-   Sanity (Content)
+-   SnipCart (Cart)
+
 ## Environment Setup
 
 In addition to the environment variables in `.env`, make sure the following variables are present as well:
