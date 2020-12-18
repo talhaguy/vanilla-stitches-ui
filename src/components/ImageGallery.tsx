@@ -43,7 +43,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
 
     return (
         <Container>
-            <div>
+            <div data-testid="main-image-cont">
                 <Image
                     src={images[selectedImageIndex].large}
                     width={350}
@@ -54,7 +54,11 @@ export function ImageGallery({ images }: ImageGalleryProps) {
             <ul className="thumbs">
                 {images.map((image, i) => {
                     return (
-                        <li key={i} className="thumb-cont">
+                        <li
+                            key={i}
+                            className="thumb-cont"
+                            data-testid={`thumb-cont-${i}`}
+                        >
                             <Image
                                 className={`thumb ${
                                     selectedImageIndex === i ? "selected" : ""
@@ -64,6 +68,8 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                                 height={144}
                                 layout="responsive"
                                 onClick={() => setSelectedImageIndex(i)}
+                                role="button"
+                                aria-label={`Thumb ${i + 1}`}
                             />
                         </li>
                     );
