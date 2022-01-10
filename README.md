@@ -27,9 +27,19 @@ In addition to the environment variables in `.env`, make sure the following vari
 
 On local environments, you may use a `.env.local`:
 
+// TODO: remove sanity references
+
 ```
 SNIP_CART_PUBLIC_API_KEY=asdfasdfasdfasdf
 SANITY_READ_DATA_TOKEN=asdfasdfasdfasdf
 SANITY_DATASET_DEV=dev
 SANITY_DATASET_PROD=prod
 ```
+
+// TODO: document the following commands
+cd docker/vanillastitchesdb
+docker-compose up -d
+mongo --username myuser --password password
+use vanillastitchesdb
+
+nvm use

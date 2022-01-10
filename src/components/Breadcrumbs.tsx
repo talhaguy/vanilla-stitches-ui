@@ -16,20 +16,15 @@ const Container = styled.div.attrs((props) => ({
 `;
 
 export interface BreadcrumbProps {
-    categories: ProductPageCategory[];
+    category: ProductPageCategory;
 }
 
-export function Breadcrumbs({ categories }: BreadcrumbProps) {
+export function Breadcrumbs({ category }: BreadcrumbProps) {
     return (
         <Container>
-            {categories.map((category, i, arr) => (
-                <Fragment key={i}>
-                    <Link href={category.urlPath} key={i}>
-                        <a className="link">{category.name}</a>
-                    </Link>
-                    {i !== arr.length - 1 && " | "}
-                </Fragment>
-            ))}
+            <Link href={category.urlPath}>
+                <a className="link">{category.name}</a>
+            </Link>
         </Container>
     );
 }

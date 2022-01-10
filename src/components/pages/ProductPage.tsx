@@ -78,7 +78,7 @@ export function ProductPage({ pageData }: ProductPageProps) {
                 </Head>
                 <div className="product-name-img-cont">
                     <div className="product-name-cont">
-                        <Breadcrumbs categories={pageData.categories} />
+                        <Breadcrumbs category={pageData.category} />
                         <h1 className="product-name">{pageData.name}</h1>
                     </div>
                     <div className="name-flower-cont">

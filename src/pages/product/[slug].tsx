@@ -1,30 +1,67 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import {
-    getStaticPaths as getStaticPathsForProductPage,
-    getStaticProps as getStaticPropsForProductPage,
     ContextSlugParameter,
     AppStaticPropsResult,
+    ProductPageData,
 } from "../../pageData";
-import {
-    fetchNavigationLinks,
-    fetchAllProductSlugs,
-    fetchProductBySlug,
-} from "../../sanity";
-import { ProductPage, ProductPageProps } from "../../components";
+import { ProductPage } from "../../components";
+import { getAllProductSlugs, getNavigation, getProductBySlug } from "../../db";
+import { NavigationLinkGroup } from "../../models";
 
 export default ProductPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return getStaticPathsForProductPage(fetchAllProductSlugs);
+    const slugs = await getAllProductSlugs();
+    console.log("slugs...", slugs);
+
+    return {
+        paths: slugs.map((slug) => ({
+            params: {
+                slug: slug.replace("/product/", ""),
+            },
+        })),
+        fallback: false,
+    };
 };
 
 export const getStaticProps: GetStaticProps<
-    AppStaticPropsResult<ProductPageProps>,
+    AppStaticPropsResult<ProductPageData>,
     ContextSlugParameter
 > = async (context) => {
-    return getStaticPropsForProductPage(
-        fetchNavigationLinks,
-        fetchProductBySlug,
-        context
-    ) as Promise<GetStaticPropsResult<AppStaticPropsResult<ProductPageProps>>>;
+    // TODO: handle error
+    const [productData, navigationData] = await Promise.all([
+        getProductBySlug("/product/" + context.params.slug),
+        getNavigation("main"),
+    ]);
+
+    const topNavigationLinkGroups: NavigationLinkGroup[] = navigationData.link_categories.map(
+        (l) => {
+            return {
+                label: l.label,
+                links: l.links.map((l) => {
+                    return {
+                        label: l.label,
+                        path: l.slug,
+                    };
+                }),
+            };
+        }
+    );
+
+    const pageData = {
+        ...productData,
+        id: productData.product_id,
+        category: {
+            ...productData.category,
+            urlPath: productData.category.slug,
+        },
+        urlPath: productData.slug,
+    };
+
+    return {
+        props: {
+            topNavigationLinkGroups,
+            pageData,
+        },
+    };
 };

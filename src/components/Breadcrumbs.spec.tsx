@@ -8,16 +8,10 @@ describe("Breadcrumbs", () => {
         render(
             <ThemeProvider theme={THEME}>
                 <Breadcrumbs
-                    categories={[
-                        {
-                            name: "Pink Pouches",
-                            urlPath: "/category/pink-pouches",
-                        },
-                        {
-                            name: "Small Pouches",
-                            urlPath: "/category/small-pouches",
-                        },
-                    ]}
+                    category={{
+                        name: "Pink Pouches",
+                        urlPath: "/category/pink-pouches",
+                    }}
                 />
             </ThemeProvider>
         );

@@ -1,21 +1,43 @@
-import { GetStaticProps, GetStaticPropsResult } from "next";
+import { GetStaticProps } from "next";
 import {
-    getStaticProps as getStaticPropsForLandingPage,
     ContextSlugParameter,
     AppStaticPropsResult,
+    LandingPageData,
 } from "../pageData";
-import { fetchNavigationLinks, fetchLandingPageDataBySlug } from "../sanity";
-import { LandingPage, LandingPageProps } from "../components";
+import { LandingPage } from "../components";
+import { getLandingPage, getNavigation } from "../db";
+import { NavigationLinkGroup } from "../models";
 
 export default LandingPage;
 
 export const getStaticProps: GetStaticProps<
-    AppStaticPropsResult<LandingPageProps>,
+    AppStaticPropsResult<LandingPageData>,
     ContextSlugParameter
 > = async (context) => {
-    return getStaticPropsForLandingPage(
-        fetchNavigationLinks,
-        fetchLandingPageDataBySlug,
-        context
-    ) as Promise<GetStaticPropsResult<AppStaticPropsResult<LandingPageProps>>>;
+    // TODO: handle error
+    const [homepageData, navigationData] = await Promise.all([
+        getLandingPage("homepage"),
+        getNavigation("main"),
+    ]);
+
+    const topNavigationLinkGroups: NavigationLinkGroup[] = navigationData.link_categories.map(
+        (l) => {
+            return {
+                label: l.label,
+                links: l.links.map((l) => {
+                    return {
+                        label: l.label,
+                        path: l.slug,
+                    };
+                }),
+            };
+        }
+    );
+
+    return {
+        props: {
+            topNavigationLinkGroups,
+            pageData: homepageData,
+        },
+    };
 };

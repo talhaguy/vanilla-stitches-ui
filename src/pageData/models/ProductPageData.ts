@@ -12,7 +12,7 @@ export interface ProductPageCategory {
 
 export interface ProductPageData {
     id: string;
-    categories: ProductPageCategory[];
+    category: ProductPageCategory;
     name: string;
     description: string;
     images: {
