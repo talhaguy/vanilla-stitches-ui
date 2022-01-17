@@ -1,13 +1,11 @@
-import { MongoClient, Db, Document, LoggerLevel } from "mongodb";
-import { ProductOnCategoryPage } from "../models";
+import { MongoClient, Db } from "mongodb";
 
 let client: MongoClient = null;
 
-// TODO: accomodate prod URI
 const uri =
     process.env.NODE_ENV === "production"
-        ? ""
-        : "mongodb://myuser:password@127.0.0.1:27017";
+        ? process.env.PROD_DB_URL
+        : process.env.DEV_DB_URL;
 
 const dbName = "vanillastitchesdb";
 
