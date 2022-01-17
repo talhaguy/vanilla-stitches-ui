@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { Layout } from "../../components/Layout";
-import { ContentPageData } from "../../pageData";
+import { ContentPageData } from "../../models";
 import { HeroImage } from "../HeroImage";
 
 const Container = styled.div`

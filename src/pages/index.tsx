@@ -3,10 +3,10 @@ import {
     ContextSlugParameter,
     AppStaticPropsResult,
     LandingPageData,
-} from "../pageData";
+    NavigationLinkGroup,
+} from "../models";
 import { LandingPage } from "../components";
 import { getLandingPage, getNavigation } from "../db";
-import { NavigationLinkGroup } from "../models";
 
 export default LandingPage;
 

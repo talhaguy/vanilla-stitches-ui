@@ -3,8 +3,8 @@ import {
     ContextSlugParameter,
     AppStaticPropsResult,
     ContentPageData,
-} from "../../pageData";
-import { ContentPage, ContentPageProps } from "../../components";
+} from "../../models";
+import { ContentPage } from "../../components";
 import {
     getAllContentPageSlugs,
     getContentPageBySlug,

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import Image from "next/image";
 import { Layout } from "../../components/Layout";
-import { LandingPageData } from "../../pageData";
+import { LandingPageData } from "../../models";
 import { Button, ButtonSize, ButtonType } from "../Button";
 import { CatchyContent } from "../CatchyContent";
 import { CollectionTile } from "../CollectionTile";

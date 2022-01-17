@@ -1,9 +1,9 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import {
     ContextSlugParameter,
     AppStaticPropsResult,
     CategoryPageData,
-} from "../../pageData";
+} from "../../models";
 import { CategoryPage } from "../../components";
 import {
     getAllCategorySlugs,

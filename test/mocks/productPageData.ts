@@ -1,4 +1,4 @@
-import { ProductPageData } from "../../src/pageData";
+import { ProductPageData } from "../../src/models";
 
 export const productPageData: ProductPageData = {
     id: "P000001",

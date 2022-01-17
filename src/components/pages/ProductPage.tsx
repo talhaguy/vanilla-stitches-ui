@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { Layout } from "../Layout";
-import { ProductPageData } from "../../pageData";
+import { ProductPageData } from "../../models";
 import { Price, PriceSize } from "../Price";
 import { AddToCartButton } from "../AddToCartButton";
 import { PriceData } from "../../models";

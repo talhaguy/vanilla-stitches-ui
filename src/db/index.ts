@@ -1,5 +1,5 @@
 import { MongoClient, Db, Document, LoggerLevel } from "mongodb";
-import { ProductOnCategoryPage } from "../pageData";
+import { ProductOnCategoryPage } from "../models";
 
 let client: MongoClient = null;
 

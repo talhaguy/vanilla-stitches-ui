@@ -1,4 +1,4 @@
-import { CategoryPageData } from "../../src/pageData";
+import { CategoryPageData } from "../../src/models";
 
 export const categoryPageData: CategoryPageData = {
     heroImage: "http://lorempixel.com/900/300/fashion/",

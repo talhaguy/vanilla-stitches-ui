@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import { ProductPageGalleryImage } from "../pageData";
+import { ProductPageGalleryImage } from "../models";
 
 const Container = styled.div`
     .thumbs {

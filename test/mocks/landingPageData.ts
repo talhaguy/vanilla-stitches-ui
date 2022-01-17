@@ -1,4 +1,4 @@
-import { LandingPageData } from "../../src/pageData";
+import { LandingPageData } from "../../src/models";
 
 export const landingPageData: LandingPageData = {
     name: "Vanilla Stitches",

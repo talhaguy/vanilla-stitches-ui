@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
-import { Testimonial as TestimonialData } from "../pageData";
+import { Testimonial as TestimonialData } from "../models";
 
 const Container = styled.div`
     .quote-cont {

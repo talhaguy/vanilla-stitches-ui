@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Testimonial as TestimonialData } from "../pageData";
+import { Testimonial as TestimonialData } from "../models";
 import { Testimonial } from "./Testimonial";
 
 const Container = styled.ul`

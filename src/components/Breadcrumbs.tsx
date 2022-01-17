@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { ProductPageCategory } from "../pageData";
+import { ProductPageCategory } from "../models";
 
 const Container = styled.div.attrs((props) => ({
     "data-testid": "breadcrumbs-cont",

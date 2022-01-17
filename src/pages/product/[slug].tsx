@@ -3,7 +3,7 @@ import {
     ContextSlugParameter,
     AppStaticPropsResult,
     ProductPageData,
-} from "../../pageData";
+} from "../../models";
 import { ProductPage } from "../../components";
 import { getAllProductSlugs, getNavigation, getProductBySlug } from "../../db";
 import { NavigationLinkGroup } from "../../models";

@@ -1,4 +1,4 @@
-import { PriceData } from "../../models/PriceData";
+import { PriceData } from "./PriceData";
 
 export interface ProductPageGalleryImage {
     thumb: string;

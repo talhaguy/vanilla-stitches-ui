@@ -1,4 +1,4 @@
-import { ContentPageData } from "../../src/pageData";
+import { ContentPageData } from "../../src/models";
 
 export const contentPageData: ContentPageData = {
     name: "About Us",

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { Layout } from "../../components/Layout";
-import { CategoryPageData } from "../../pageData";
+import { CategoryPageData } from "../../models";
 import { FlowerHr } from "../FlowerHr";
 import { HeroImage } from "../HeroImage";
 import { ProductList } from "../ProductList";
