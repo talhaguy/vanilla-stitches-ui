@@ -219,6 +219,7 @@ export interface Product {
         salePrice: number;
     };
     slug: string;
+    stock: number;
 }
 
 export async function getAllProductSlugs(): Promise<string[]> {
@@ -235,14 +236,12 @@ export async function getAllProductSlugs(): Promise<string[]> {
             }
         )
         .toArray();
-    console.log("got these slugs -----------", slugs);
 
     return slugs.map((s) => s.slug);
 }
 
 export async function getProductBySlug(slug: string): Promise<Product> {
     const db = await connectToDb();
-    console.log("FIND BY ", slug);
 
     return db.collection<Product>("product").findOne(
         {
@@ -256,9 +255,22 @@ export async function getProductBySlug(slug: string): Promise<Product> {
     );
 }
 
-///////////////
+export async function incrementProductQuantity(
+    productId: string,
+    quantity: number
+): Promise<boolean> {
+    const db = await connectToDb();
 
-// export function removeMongoId(doc: Document): Omit<Document, "_id"> {
-//     delete doc._id;
-//     return doc;
-// }
+    const result = await db.collection<Product>("product").updateOne(
+        {
+            product_id: productId,
+        },
+        {
+            $inc: {
+                stock: quantity,
+            },
+        }
+    );
+
+    return result.modifiedCount > 0;
+}

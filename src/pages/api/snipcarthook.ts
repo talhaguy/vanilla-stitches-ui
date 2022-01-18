@@ -1,36 +1,89 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { incrementProductQuantity } from "../../db";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    authorize(req.headers["X-Snipcart-RequestToken"] as string).then(
-        (authorized) => {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    if (req.method !== "POST") {
+        return res.status(405).json({
+            status: "ERROR",
+        });
+    }
+
+    return authorize(req.headers["X-Snipcart-RequestToken"] as string)
+        .then((authorized) => {
             if (!authorized) {
-                res.status(401).json({
-                    STATUS: "ERROR",
-                });
-                return;
+                throw new SnipCartHookError(401);
             }
 
-            // TODO: check for order complete webhook type
-
-            let data: OrderCompleteRequestBody;
+            let data: SnipCartWebHookRequestBody;
             try {
                 data = JSON.parse(req.body);
             } catch (err) {
-                res.status(400).json({
-                    STATUS: "ERROR",
-                });
-                return;
+                throw new SnipCartHookError(400);
             }
 
-            // TODO: get quantity of each item ordered
-            // then subtract quantity from current inv in db
+            if (data.eventName === HookEventName.OrderComplete) {
+                const orderCompleteData: OrderCompleteRequestBody = data as OrderCompleteRequestBody;
+
+                // get product quantities ordered
+                const productQuantity: {
+                    [key: string]: number;
+                } = orderCompleteData.content.items.reduce((accum, item) => {
+                    accum[item.id] = item.quantity;
+                    return accum;
+                }, {});
+
+                // subtract quantities from stock in DB
+                const quantityPromises = Object.entries(productQuantity).map(
+                    ([id, qty]) => {
+                        return incrementProductQuantity(id, -qty);
+                    }
+                );
+
+                return Promise.all(quantityPromises);
+            }
+
+            // simply continue for any other hook type
+            return null;
+        })
+        .then((queryRes) => {
+            // if there is no queryRes, that means the web hook type was an unsupported one
+            // just pass through successfully
+            if (!queryRes) {
+                return res.status(200).json({
+                    status: "SUCCESS",
+                });
+            }
+
+            // make sure all query results are successfull
+            const allUpdated = queryRes.every((r) => r);
+            if (!allUpdated) {
+                console.log("ERROR: not all products inventory was updated");
+                throw new SnipCartHookError(
+                    400,
+                    "not all products inventory were updated"
+                );
+            }
 
             res.status(200).json({
-                name: "John Doe",
-                env: process.env.NODE_ENV,
+                status: "SUCCESS",
             });
-        }
-    );
+        })
+        .catch((err) => {
+            if (err instanceof SnipCartHookError) {
+                return res.status(err.status).json({
+                    status: "ERROR",
+                    message: err.message,
+                });
+            }
+
+            res.status(500).json({
+                status: "ERROR",
+                message: err.message,
+            });
+        });
 }
 
 /**
@@ -57,10 +110,13 @@ async function authorize(token?: string): Promise<boolean> {
     });
 }
 
+interface SnipCartWebHookRequestBody {
+    eventName: HookEventName;
+}
+
 // full definition for order complete hook body data: https://docs.snipcart.com/v3/webhooks/order-events
 // the following definition is only partially defined
-interface OrderCompleteRequestBody {
-    eventName: HookEventName;
+interface OrderCompleteRequestBody extends SnipCartWebHookRequestBody {
     content: {
         items: OrderCompleteItem[];
     };
@@ -73,4 +129,13 @@ enum HookEventName {
 interface OrderCompleteItem {
     id: string;
     quantity: number;
+}
+
+class SnipCartHookError extends Error {
+    constructor(
+        public status = 400,
+        ...params: ConstructorParameters<ErrorConstructor>
+    ) {
+        super(...params);
+    }
 }

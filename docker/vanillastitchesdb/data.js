@@ -48,7 +48,8 @@ db.product.insertMany([
             "listPrice": 100,
             "salePrice": 80
         },
-        "slug": "/product/foo123"
+        "slug": "/product/foo123",
+        "stock": 100
     }
 ])
 
