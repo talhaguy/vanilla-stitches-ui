@@ -12,6 +12,7 @@ const Container = styled.ul`
 
     @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
 

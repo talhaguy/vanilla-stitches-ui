@@ -17,6 +17,26 @@ db.category.insertMany([
                     "salePrice": 80
                 },
                 "slug": "/product/foo123"
+            },
+            {
+                "product_id": "foo234",
+                "name": "Foo 2",
+                "image": "/product/pink-pouch-thumb.jpeg",
+                "price": {
+                    "listPrice": 100,
+                    "salePrice": 80
+                },
+                "slug": "/product/foo234"
+            },
+            {
+                "product_id": "foo345",
+                "name": "Foo 3",
+                "image": "/product/pink-pouch-thumb.jpeg",
+                "price": {
+                    "listPrice": 100,
+                    "salePrice": 80
+                },
+                "slug": "/product/foo345"
             }
         ]
     }
@@ -49,6 +69,56 @@ db.product.insertMany([
             "salePrice": 80
         },
         "slug": "/product/foo123",
+        "stock": 100
+    },
+    {
+        "product_id": "foo234",
+        "name": "Foo 2",
+        "description": "Lorem ipsum",
+        "images": {
+            "gallery": [
+                {
+                    "thumb": "/product/pink-pouch-thumb.jpeg",
+                    "large": "/product/pink-pouch-large.jpeg"
+                }
+            ],
+            "cart": "/product/pink-pouch-thumb.jpeg"
+        },
+        "category": {
+            "category_id": "cat1",
+            "name": "Cat 1",
+            "slug": "/category/cat1"
+        },
+        "price": {
+            "listPrice": 100,
+            "salePrice": 80
+        },
+        "slug": "/product/foo234",
+        "stock": 100
+    },
+    {
+        "product_id": "foo345",
+        "name": "Foo 3",
+        "description": "Lorem ipsum",
+        "images": {
+            "gallery": [
+                {
+                    "thumb": "/product/pink-pouch-thumb.jpeg",
+                    "large": "/product/pink-pouch-large.jpeg"
+                }
+            ],
+            "cart": "/product/pink-pouch-thumb.jpeg"
+        },
+        "category": {
+            "category_id": "cat1",
+            "name": "Cat 1",
+            "slug": "/category/cat1"
+        },
+        "price": {
+            "listPrice": 100,
+            "salePrice": 80
+        },
+        "slug": "/product/foo345",
         "stock": 100
     }
 ])

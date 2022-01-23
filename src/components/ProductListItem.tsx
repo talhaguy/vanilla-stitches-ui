@@ -6,19 +6,7 @@ import { PriceData } from "../models";
 import Image from "next/image";
 
 const Container = styled.li`
-    width: 50%;
-
-    &:nth-child(odd) {
-        padding-right: 5px;
-    }
-
-    &:nth-child(even) {
-        padding-left: 5px;
-    }
-
-    &:nth-child(n + 3) {
-        margin-top: ${(props) => props.theme.SPACING.SECTION_INSIDE};
-    }
+    width: 100%;
 
     .link {
         display: block;

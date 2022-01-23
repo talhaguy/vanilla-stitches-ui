@@ -6,9 +6,18 @@ import { ProductListItem } from "./ProductListItem";
 const Container = styled.ul`
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
     list-style-type: none;
+
+    .product {
+        width: calc(50% - (${(props) => props.theme.SPACING.PAGE_MARGIN} / 2));
+
+        &:nth-child(n + 3) {
+            margin-top: ${(props) => props.theme.SPACING.SECTION_INSIDE};
+        }
+    }
 `;
 
 export interface ProductListProps {
@@ -20,13 +29,15 @@ export function ProductList({ products }: ProductListProps) {
         <Container>
             {products.map((product, i) => {
                 return (
-                    <ProductListItem
-                        key={i}
-                        urlPath={product.urlPath}
-                        image={product.image}
-                        name={product.name}
-                        price={product.price}
-                    />
+                    <div className="product">
+                        <ProductListItem
+                            key={i}
+                            urlPath={product.urlPath}
+                            image={product.image}
+                            name={product.name}
+                            price={product.price}
+                        />
+                    </div>
                 );
             })}
         </Container>
