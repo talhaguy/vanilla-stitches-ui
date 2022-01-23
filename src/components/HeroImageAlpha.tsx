@@ -30,6 +30,8 @@ const Container = styled.div`
     }
 
     .img-cont {
+        height: 500px;
+        position: relative;
         z-index: 1;
     }
 `;
@@ -50,9 +52,10 @@ export function HeroImageAlpha({ text }: HeroImageAlphaProps) {
             <div className="img-cont">
                 <Image
                     src="/misc/sample-pouches.png"
-                    layout="responsive"
+                    layout="fill"
                     width="333"
                     height="241"
+                    objectFit="cover"
                 />
             </div>
         </Container>

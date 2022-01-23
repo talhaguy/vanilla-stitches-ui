@@ -13,8 +13,30 @@ import { SectionHeading } from "../SectionHeading";
 import { TestimonialCollection } from "../TestimonialCollection";
 
 const Container = styled.div`
+    .collection-tiles {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .collection-tile {
+        @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+            width: calc(
+                50% - (${(props) => props.theme.SPACING.PAGE_MARGIN} / 2)
+            );
+        }
+    }
+
     .collection-tile + .collection-tile {
         margin-top: ${(props) => props.theme.SPACING.SECTION_INSIDE};
+
+        @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+            margin-top: 0;
+        }
     }
 
     .flower-hr {
@@ -37,6 +59,11 @@ const Container = styled.div`
 
     .shop-now-btn {
         margin: ${(props) => props.theme.SPACING.SECTION_INSIDE} 0;
+    }
+
+    .img-beta-cont {
+        position: relative;
+        height: 500px;
     }
 `;
 
@@ -70,13 +97,16 @@ export function LandingPage({ pageData }: LandingPageProps) {
                             label="Shop Now"
                         />
                     </div>
-                    <Image
-                        className="img-beta"
-                        src={pageData.imageBeta}
-                        layout="responsive"
-                        width="333"
-                        height="241"
-                    />
+                    <div className="img-beta-cont">
+                        <Image
+                            className="img-beta"
+                            src={pageData.imageBeta}
+                            layout="fill"
+                            width="333"
+                            height="241"
+                            objectFit="cover"
+                        />
+                    </div>
                 </section>
                 <div className="flower-hr">
                     <FlowerHr showFlowers={true} />
@@ -90,19 +120,21 @@ export function LandingPage({ pageData }: LandingPageProps) {
                         Quisque at lobortis ex. Phasellus eleifend mi
                         ullamcorper felis tempus.
                     </p>
-                    <div className="collection-tile">
-                        <CollectionTile
-                            linkPath={"/category/pink-pouches"}
-                            label={"Pink Pouches"}
-                            imageLink={"/misc/sample-pouches.png"}
-                        />
-                    </div>
-                    <div className="collection-tile">
-                        <CollectionTile
-                            linkPath={"/category/bookmarks"}
-                            label={"Bookmarks"}
-                            imageLink={"/misc/sample-pouches.png"}
-                        />
+                    <div className="collection-tiles">
+                        <div className="collection-tile">
+                            <CollectionTile
+                                linkPath={"/category/pink-pouches"}
+                                label={"Pink Pouches"}
+                                imageLink={"/misc/sample-pouches.png"}
+                            />
+                        </div>
+                        <div className="collection-tile">
+                            <CollectionTile
+                                linkPath={"/category/bookmarks"}
+                                label={"Bookmarks"}
+                                imageLink={"/misc/sample-pouches.png"}
+                            />
+                        </div>
                     </div>
                 </section>
                 <div className="flower-hr">

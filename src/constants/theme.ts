@@ -1,6 +1,9 @@
 import { DefaultTheme } from "styled-components";
 
 export const THEME: DefaultTheme = {
+    BREAKPOINTS: {
+        LARGE: "1000px",
+    },
     FONTS: {
         SANS: "'PT Sans', sans-serif",
         SERIF: "'PT Serif', serif",

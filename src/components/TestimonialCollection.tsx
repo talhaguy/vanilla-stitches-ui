@@ -7,9 +7,28 @@ const Container = styled.ul`
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
     .testimonial-cont + .testimonial-cont {
         margin-top: 40px;
+
+        @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+            margin-top: 0;
+        }
+    }
+
+    .testimonial-cont {
+        @media (min-width: ${(props) => props.theme.BREAKPOINTS.LARGE}) {
+            width: calc(
+                50% - (${(props) => props.theme.SPACING.PAGE_MARGIN} / 2)
+            );
+        }
     }
 `;
 
