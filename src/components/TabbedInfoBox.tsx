@@ -17,6 +17,7 @@ const Container = styled.div`
         color: ${(props) => props.theme.COLORS.WHITE};
         font: 1.8rem ${(props) => props.theme.FONTS.SANS};
         padding: 16px;
+        cursor: pointer;
 
         &.active {
             box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);

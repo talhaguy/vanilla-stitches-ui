@@ -55,6 +55,18 @@ db.product.insertMany([
                 {
                     "thumb": "/product/pink-pouch-thumb.jpeg",
                     "large": "/product/pink-pouch-large.jpeg"
+                },
+                {
+                    "thumb": "/product/pink-pouch-thumb.jpeg",
+                    "large": "/product/pink-pouch-large.jpeg"
+                },
+                {
+                    "thumb": "/product/pink-pouch-thumb.jpeg",
+                    "large": "/product/pink-pouch-large.jpeg"
+                },
+                {
+                    "thumb": "/product/pink-pouch-thumb.jpeg",
+                    "large": "/product/pink-pouch-large.jpeg"
                 }
             ],
             "cart": "/product/pink-pouch-thumb.jpeg"
@@ -175,7 +187,7 @@ db.navigation.insertMany([
                     },
                     {
                         "label": "Link 2",
-                        "slug": "/some/navslug"
+                        "slug": "/page/contentpage123"
                     }
                 ]
             }
