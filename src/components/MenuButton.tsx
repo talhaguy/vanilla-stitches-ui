@@ -4,6 +4,8 @@ import Image from "next/image";
 import { ButtonStyleReset } from "./styles/ButtonStyleReset";
 
 const Container = styled(ButtonStyleReset)`
+    cursor: pointer;
+
     .hamburger-img {
         filter: ${(props) => props.theme.SHADOWS.ICONS};
     }

@@ -6,6 +6,7 @@ import { CSSClass } from "../snipcart";
 
 const Container = styled(ButtonStyleReset)`
     position: relative;
+    cursor: pointer;
 
     .cart-img {
         filter: ${(props) => props.theme.SHADOWS.ICONS};

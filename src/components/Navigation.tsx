@@ -41,6 +41,7 @@ const Container = styled.nav.attrs((props) => ({
         position: absolute;
         top: 10px;
         right: 10px;
+        cursor: pointer;
     }
 
     .links-cont {
